@@ -21,7 +21,18 @@ If find A
 Then if A or G → STOP
 If find G then A→ STOP
 New array list
-Transcribe it : Copy ORFs--------------------------------------------------------------------Aretha
+/*Transcribe it : Copy ORFs--------------------------------------------------------------------Aretha*/
+ArrayList<String> mRNA = new ArrayList<>(); 
+ArrayList<String> mRNA =  (ArrayList<String>) DNA.clone();
+
+	    
+for (i=0, i<DNA.length, i++) {
+	if DNA.get(i)=="T" {
+		DNA.set(i, )
+	    
+	
+
+
 mRNA: Copy ORF ArrayList--- change T to U
 tRNA print it -----------------------------------------------------------------------------------Elena
 Transcribe it by pairings
