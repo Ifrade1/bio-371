@@ -129,14 +129,13 @@ System.out.println("ORF 1+:" + codons);
 
 
 
-	
-/* mRNA: Copy ORF ArrayList--- change T to U
+	 mRNA: Copy ORF ArrayList--- change T to U
 tRNA print it -----------------------------------------------------------------------------------Elena
 Transcribe it by pairings
 Amino acids - use mod to keep track of position in the codon---------------------------Issy 
  ArrayList<String> Amino = new ArrayList<String>();
 (if i mod 3  == 0){
-if (array[i] == ‘u’)||(array[i] == 'U'){
+if (array[i] == ‘u’)||(array[i] == 'U'){  //Starts with U
 	if (array [i+1] == ‘c’){
 		// then the amino acid is ser
 	}
@@ -147,17 +146,19 @@ if (array[i] == ‘u’)||(array[i] == 'U'){
 		else( if array[i+2] == ‘a’ ||  ‘g’){
 		}
 			//then amino acid is leu
-	else if array[i+1] == ‘a’
-If array [i+2] == u || c then amino acid is tyr
-Else if array[i+2] == ‘a’ || ‘g’ then stop
-Else if array[i+1] == ‘g’
-If array [i+2] == u || c then amino acid is cys
-Else if array[i+2] == ‘a’ then stop
-If array [i+2] == g then amino acid is trp
-If array[i] = ‘c’
-If array [i+1] == ‘c’ then the amino acid is pro
-Else if array[i+1] == ‘u’ then the amino acid is leu
-Else if array[i+1] == ‘a’
+	else if (array[i+1] == ‘a’){ 
+		if (array [i+2] == 'u' || 'c' )//then amino acid is tyr	
+		else if (array[i+2] == ‘a’ || ‘g’) //then stop
+			}
+	else if (array[i+1] == ‘g’)
+		if (array [i+2] == 'u' || 'c')  //then amino acid is cys
+			else if( array[i+2] == ‘a’) // then stop
+ 		if (array [i+2] == g) // then amino acid is trp
+
+if (array[i] = ‘c’)
+	if (array [i+1] == ‘c’) //then the amino acid is pro
+	else (if array[i+1] == ‘u’) // then the amino acid is leu
+	else if array[i+1] == ‘a’ //
 If array [i+2] == u || c then amino acid is his
 Else if array[i+2] == ‘a’ || ‘g’ then amino acid is gln
 Else if array[i+1] == ‘g’ then amino acid is arg
@@ -177,10 +178,10 @@ Else if array[i+2] == ‘a’ then amino acid is arg
 If array[i] = ‘g’
 If array [i+1] == ‘c’  then the amino acid is ala
 Else if array[i+1] == ‘u’ then amino acid is val
-Else if array[i+1] == ‘a’
-If array [i+2] == u || c then amino acid is asp
-Else if array[i+2] == ‘a’ || ‘g’ then amino acid is glu
-Else if array[i+1] == ‘g’ then amino acid is gly
+else if array[i+1] == ‘a’
+if array [i+2] == u || c then amino acid is asp
+else if array[i+2] == ‘a’ || ‘g’ then amino acid is glu
+else if array[i+1] == ‘g’ then amino acid is gly
 
 
 length 100-10,000
