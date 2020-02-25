@@ -9,8 +9,10 @@ public class Main {
 	// write your code here
         /*Read from file to ArrayList DNA ------------------------------------------------Elena
 Orientation-correct it to 5’ to 3’ ----tell you in file
-If i starts with 3, then there will have to be a loop to flip it.
-Want 5’-3’
+If i starts with 3, then there will have to be a loop to flip it
+*/
+
+/* Want 5’-3’
 Find ORFs -------------------------------------------------------------------------------------- Nic
 Find A first
 Then T,  then G→ START
@@ -21,19 +23,94 @@ If find A
 Then if A or G → STOP
 If find G then A→ STOP
 New array list
-/*Transcribe it : Copy ORFs--------------------------------------------------------------------Aretha*/
-ArrayList<String> mRNA = new ArrayList<>(); 
-ArrayList<String> mRNA =  (ArrayList<String>) DNA.clone();
+*/
+	    
+//Aretha--make complementary strand, find ORFs of complementary strand
+ArrayList<Character> inputB = new ArrayList <Character>();
+    ArrayList<String> ORFB = new ArrayList<String>();
+    ArrayList<String> ORFlocB = new ArrayList<String>();
+    String ORFSB = new String();
+	    
+//makes complementary strand in inputB from inputA, reads 5' to 3'
+for (i=inputA.size(); i=0; i--) {
+if inputA.get(i) == 'a' {
+	inputB.add('t');
+}
+	else if inputA.get(i) == 't' {
+		inputB.add('a');
+	}
+		else if inputA.get(i) == 'c' {
+			inputB.add('g');
+		}
+			else if inputA.get(i) == 'g' {
+				inputB.add('c');
+			}
+}
 
+	    //finds ORF in inputB 
+    for (i=0; (i + 2) < inputB.size(); i++) {
+      if ((inputB.get(i) == 'a') && (inputB.get(i+1) == 't') && (inputB.get(i+2)) == 'g') {
+        //System.out.println("ORF found at " + i);
+        ORFloc.add("" + i);
+
+        for (int o = 0; i + 2 < inputB.size(); o++) {
+          if (o != 0 && o%3 == 0) {
+            if (inputB.get(i) == 't') {
+              if
+                ((inputB.get(i+1) == 'a' && inputB.get(i+2) == 'g') ||
+                (inputB.get(i+1) == 'a' && inputB.get(i+2) == 'a') ||
+                (inputB.get(i+1) == 'g' && inputB.get(i+2) == 'a'))
+              {
+                  //System.out.println("STOP codon found at " + i);
+                  ORFSB = ORFSB + "" + inputB.get(i);
+                  ORFSB = ORFSB + "" + inputB.get(i+1);
+                  ORFSB = ORFSB + "" + inputB.get(i+2);
+                  i = i+2;
+                  break;
+              }
+            }
+          }
+          ORFSB = ORFSB + "" + inputB.get(i);
+          i++;
+        }
+        ORFB.add(ORFSB);
+        ORFSB = "";
+      }
+    }
+    System.out.println("ORFs are: " + ORFB);
+    System.out.println("ORFs at: " + ORFlocB);
+  }
+}
+
+//Transcribe ORFS--------------------------------------------------------------------Aretha
+ArrayList<String> ORFA = new ArrayList<>(); 
+ArrayList<String> AmRNA =  (ArrayList<String>) ORFA.clone();
+ArrayList<String> ORFB = new ArrayList<>(); 
+ArrayList<String> BmRNA =  (ArrayList<String>) ORFB.clone();
 	    
-for (i=0, i<DNA.length, i++) {
-	if DNA.get(i)=="T" {
-		DNA.set(i, )
-	    
+
+for (i=0, i<ORFA.length(), i++) {
+	String s = ORFA.get(i);
+	for (k=0, k<s.lengh(); k++) {
+	if ORFA.get(i)=="T" {
+		AmRNA.set(i, "U");
+	}
+	}
+	System.out.println("ORF 1+:" + 
+}	    
+
+for (i=0, i<ORFB.length(), i++) {
+	String s = ORFB.get(i);
+	for (k=0, k<s.lengh(); k++) {
+	if ORFB.get(i)=="T" {
+		BmRNA.set(i, "U");
+	}
+	}
+}	    
 	
 
 
-mRNA: Copy ORF ArrayList--- change T to U
+/*mRNA: Copy ORF ArrayList--- change T to U
 tRNA print it -----------------------------------------------------------------------------------Elena
 Transcribe it by pairings
 Amino acids - use mod to keep track of position in the codon---------------------------Issy
