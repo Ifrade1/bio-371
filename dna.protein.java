@@ -155,8 +155,8 @@ class Nucleo {
         
         /*
         
-        ArrayList<String> AmRNA =  (ArrayList<String>) ORFA.clone();
-        ArrayList<String> BmRNA =  (ArrayList<String>) ORFB.clone();
+        ArrayList<String> AmRNA =  new ArrayList<String>();
+        ArrayList<String> BmRNA =  new ArrayList<String>();
                 
 
         for (int i=0; i<ORFA.length(); i++) {
