@@ -89,7 +89,7 @@ class Nucleo {
                 
 
 
-            if ((DNA.get(i) == 'a') && (DNA.get(i+1) == 't') && (DNA.get(i+2)) == 'g') {
+            if ((complementDNA.get(i) == 'a') && (complementDNA.get(i+1) == 't') && (complementDNA.get(i+2)) == 'g') {
                 
                 
                 System.out.printf("\nORF found at " + i);
@@ -98,7 +98,7 @@ class Nucleo {
                 
                 
 
-                for (int o = i; (o + 2) < DNA.size(); o++) {
+                for (int o = i; (o + 2) < complementDNA.size(); o++) {
 
                     
 
@@ -106,16 +106,16 @@ class Nucleo {
                         
                         
 
-                        if (DNA.get(i) == 't') {
+                        if (complementDNA.get(i) == 't') {
                              if
-                            ((DNA.get(i+1) == 'a' && DNA.get(i+2) == 'g') ||
+                            ((complementDNA.get(i+1) == 'a' && complementDNA.get(i+2) == 'g') ||
                             (DNA.get(i+1) == 'a' && DNA.get(i+2) == 'a') ||
                             (DNA.get(i+1) == 'g' && DNA.get(i+2) == 'a'))
                          {
                             System.out.println("STOP codon found at " + i);
-                            ORFSB = ORFSB + "" + DNA.get(i);
-                            ORFSB = ORFSB + "" + DNA.get(i+1);
-                            ORFSB = ORFSB + "" + DNA.get(i+2);
+                            ORFSB = ORFSB + "" + complementDNA.get(i);
+                            ORFSB = ORFSB + "" + complementDNA.get(i+1);
+                            ORFSB = ORFSB + "" + complementDNA.get(i+2);
                             
                             break;
                         }
@@ -127,7 +127,7 @@ class Nucleo {
 
                     
                     System.out.println(DNA.get(i));
-                    ORFSB = ORFSB + "" + DNA.get(i);
+                    ORFSB = ORFSB + "" + complementDNA.get(i);
                     i++;
                     }
 
@@ -199,7 +199,7 @@ class Nucleo {
       }
     }
     //System.out.println(inputA);
-    System.out.println("Template ORFs are: " + ORFA);
+    System.out.printf("\nTemplate ORFs are: " + ORFA);
     //System.out.println("ORFs at: " + ORFloc);
 
 
