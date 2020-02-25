@@ -130,7 +130,7 @@ class Nucleo {
                     }
 
                     
-                    System.out.println(DNA.get(i));
+                   // System.out.println(DNA.get(i));
                     ORFSB = ORFSB + "" + complementDNA.get(i);
                     i++;
                     }
