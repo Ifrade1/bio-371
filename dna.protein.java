@@ -166,8 +166,8 @@ class Nucleo {
 
         for (int i=0; i<ORFA.length(); i++) {
             String s = ORFA.get(i);
-            for (k=0;k<s.lengh(); k++) {
-            if ORFA.get(i)=="T" {
+            for (k=0; k<s.lengh(); k++) {
+            if (ORFA.get(i))=="T" {
                 AmRNA.set(i, "U");
             }
             }
@@ -176,12 +176,29 @@ class Nucleo {
 
         for (int i=0; i<ORFB.length(); i++) {
             String s = ORFB.get(i);
-            for (k=0, k<s.lengh(); k++) {
-            if ORFB.get(i)=="T" {
+            for (k=0; k<s.lengh(); k++) {
+            if (ORFB.get(i)=="T") {
                 BmRNA.set(i, "U");
             }
             }
         }	
+        
+        
+//mRNA listed as codons
+System.out.println("mRNA listed as codons");
+For (i=0; i<AmRNA.length(); i++) {
+ArrayList<String> codons = new ArrayList<String>();
+	String orf = AmRNA.get(i);
+		for (k=1; k<=s.length(); k++) {
+			codons.add(orf[k]);
+			If (k%3==0) {
+			codons.add(“-“);	
+            }
+}
+System.out.println("ORF 1+:" + codons);
+}
+
+
 
 
         */
