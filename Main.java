@@ -92,9 +92,9 @@ ArrayList<String> BmRNA =  (ArrayList<String>) ORFB.clone();
 for (i=0, i<ORFA.length(), i++) {
 	String s = ORFA.get(i);
 	for (k=0, k<s.lengh(); k++) {
-	if ORFA.get(i)=="T" {
-		AmRNA.set(i, "U");
-	}
+		if ORFA.get(i)=="T" {
+			AmRNA.set(i, "U");
+		}
 	}
 	System.out.println("ORF 1+:" + s );
 }	    
@@ -104,7 +104,7 @@ for (i=0, i<ORFB.length(), i++) {
 	for (k=0, k<s.lengh(); k++) {
 	if ORFB.get(i)=="T" {
 		BmRNA.set(i, "U");
-	}
+		}
 	}
 	System.out.println("ORF 1+:" + s );
 }	  
