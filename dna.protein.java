@@ -151,7 +151,56 @@ class Nucleo {
 
 
 
+// ArrayList<Character> inputA = new ArrayList <Character>();
 
+//     for (int i=0; i < inputS.length(); i++) {
+//       char pt = inputS.charAt(i);
+//       inputA.add(pt);
+//     }
+
+    ArrayList<String> ORFA = new ArrayList<String>();
+    //ArrayList<String> ORFloc = new ArrayList<String>();
+    String ORFS = new String();
+    String ORFgood = new String();
+
+    for (i=0; (i + 2) < DNA.size(); i++) {
+      if ((DNA.get(i) == 'a') && (DNA.get(i+1) == 't') && (DNA.get(i+2)) == 'g') {
+        //System.out.println("ORF found at " + i);
+        //ORFloc.add("" + i);
+
+        for (int o = 0; i + 2 < DNA.size(); o++) {
+          if (o != 0 && o%3 == 0) {
+            if (DNA.get(i) == 't') {
+              if
+                ((DNA.get(i+1) == 'a' && DNA.get(i+2) == 'g') ||
+                (DNA.get(i+1) == 'a' && DNA.get(i+2) == 'a') ||
+                (DNA.get(i+1) == 'g' && DNA.get(i+2) == 'a'))
+              {
+                  //System.out.println("STOP codon found at " + i);
+                  ORFS = ORFS + "" + DNA.get(i);
+                  ORFS = ORFS + "" + DNA.get(i+1);
+                  ORFS = ORFS + "" + DNA.get(i+2);
+                  ORFgood = ORFS;
+                  i = i+2;
+                  break;
+              }
+            }
+          }
+          ORFS = ORFS + "" + DNA.get(i);
+          i++;
+        }
+
+        if (ORFgood != "") {
+          ORFA.add(ORFgood);
+        }
+
+        ORFS = "";
+        ORFgood = "";
+      }
+    }
+    //System.out.println(inputA);
+    System.out.println("ORFs are: " + ORFA);
+    //System.out.println("ORFs at: " + ORFloc);
 
 
         //////////////////////////Transcribe ORFS--------------------------------------------------------------------Aretha
