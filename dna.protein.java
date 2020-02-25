@@ -61,7 +61,6 @@ class Nucleo {
         final ArrayList<String> ORFB = new ArrayList<String>();
         final ArrayList<String> ORFlocB = new ArrayList<String>();
         String ORFSB = "";
-	String ORFBgood = "";
 
         //////////////////// makes complementary strand in complementDNAfrom DNA, reads
         //////////////////// 5' to 3'
@@ -86,11 +85,10 @@ class Nucleo {
 
 
         //finds ORF in complementDNA
-        for (int i=complementDNA.size()-1; (i - 2) >= 0; i--) {
-                
+        for (int i=0; (i + 2) < complementDNA.size(); i++) {
+             
 
-
-            if ((complementDNA.get(i) == 'a') && (complementDNA.get(i+1) == 't') && (complementDNA.get(i+2)) == 'g') {
+            if ((DNA.get(i) == 'a') && (DNA.get(i+1) == 't') && (DNA.get(i+2)) == 'g') {
                 
                 
                 System.out.printf("\nORF found at " + i);
@@ -99,7 +97,7 @@ class Nucleo {
                 
                 
 
-                for (int o = i; (o + 2) < complementDNA.size(); o++) {
+                for (int o = i; (o + 2) < DNA.size(); o++) {
 
                     
 
@@ -107,19 +105,16 @@ class Nucleo {
                         
                         
 
-                        if (complementDNA.get(i) == 't') {
+                        if (DNA.get(i) == 't') {
                              if
-                            ((complementDNA.get(i+1) == 'a' && complementDNA.get(i+2) == 'g') ||
+                            ((DNA.get(i+1) == 'a' && DNA.get(i+2) == 'g') ||
                             (DNA.get(i+1) == 'a' && DNA.get(i+2) == 'a') ||
                             (DNA.get(i+1) == 'g' && DNA.get(i+2) == 'a'))
                          {
                             System.out.println("STOP codon found at " + i);
-                            ORFSB = ORFSB + "" + complementDNA.get(i);
-                            ORFSB = ORFSB + "" + complementDNA.get(i+1);
-                            ORFSB = ORFSB + "" + complementDNA.get(i+2);
-				     
-			    ORFBgood = ORFSB;
-		    	    i = i + 2;
+                            ORFSB = ORFSB + "" + DNA.get(i);
+                            ORFSB = ORFSB + "" + DNA.get(i+1);
+                            ORFSB = ORFSB + "" + DNA.get(i+2);
                             
                             break;
                         }
@@ -130,23 +125,19 @@ class Nucleo {
                     }
 
                     
-                   // System.out.println(DNA.get(i));
-                    ORFSB = ORFSB + "" + complementDNA.get(i);
+                    System.out.println(DNA.get(i));
+                    ORFSB = ORFSB + "" + DNA.get(i);
                     i++;
                     }
 
-                    if (ORFBgood =! "") {
-                    	ORFB.add(ORFSB);
-		    }
+                    
+                    ORFB.add(ORFSB);
                     ORFSB = "";
-		    ORFBgood = "";
                 }
 
                 
 
                 
-                
-
                 
 
             
@@ -157,56 +148,7 @@ class Nucleo {
 
 
 
-// ArrayList<Character> inputA = new ArrayList <Character>();
 
-//     for (int i=0; i < inputS.length(); i++) {
-//       char pt = inputS.charAt(i);
-//       inputA.add(pt);
-//     }
-
-    ArrayList<String> ORFA = new ArrayList<String>();
-    //ArrayList<String> ORFloc = new ArrayList<String>();
-    String ORFS = new String();
-    String ORFgood = new String();
-
-    for (i=0; (i + 2) < DNA.size(); i++) {
-      if ((DNA.get(i) == 'a') && (DNA.get(i+1) == 't') && (DNA.get(i+2)) == 'g') {
-        //System.out.println("ORF found at " + i);
-        //ORFloc.add("" + i);
-
-        for (int o = 0; i + 2 < DNA.size(); o++) {
-          if (o != 0 && o%3 == 0) {
-            if (DNA.get(i) == 't') {
-              if
-                ((DNA.get(i+1) == 'a' && DNA.get(i+2) == 'g') ||
-                (DNA.get(i+1) == 'a' && DNA.get(i+2) == 'a') ||
-                (DNA.get(i+1) == 'g' && DNA.get(i+2) == 'a'))
-              {
-                  //System.out.println("STOP codon found at " + i);
-                  ORFS = ORFS + "" + DNA.get(i);
-                  ORFS = ORFS + "" + DNA.get(i+1);
-                  ORFS = ORFS + "" + DNA.get(i+2);
-                  ORFgood = ORFS;
-                  i = i+2;
-                  break;
-              }
-            }
-          }
-          ORFS = ORFS + "" + DNA.get(i);
-          i++;
-        }
-
-        if (ORFgood != "") {
-          ORFA.add(ORFgood);
-        }
-
-        ORFS = "";
-        ORFgood = "";
-      }
-    }
-    //System.out.println(inputA);
-    System.out.printf("\nTemplate ORFs are: " + ORFA);
-    //System.out.println("ORFs at: " + ORFloc);
 
 
         //////////////////////////Transcribe ORFS--------------------------------------------------------------------Aretha
@@ -218,25 +160,22 @@ class Nucleo {
                 
 
         for (int i=0; i<ORFA.length(); i++) {
-            String s = ORFA.get(i);
-            for (k=0; k<s.length(); k++) {
-            if (ORFA.get(i))=="T" {
-                AmRNA.set(i, "U");
+            ArrayList<Character> s = ORFA.get(i);
+            for (int k=0; k<s.length(); k++) {
+            	if (s.charAt(k)=='T') {
+               	 	set(k, ‘U’);
+		}
+		String str = s.toString();
+		AmRNA.add(str);
+	
+           
             }
-            }
-            System.out.println("ORF 1+:" + s); 
+            System.out.println("ORF 1+:" + str); 
         }	    
 
-        for (int i=0; i<ORFB.length(); i++) {
-            String s = ORFB.get(i);
-            for (k=0; k<s.length(); k++) {
-            if (ORFB.get(i)=="T") {
-                BmRNA.set(i, "U");
-            }
-            }
-	    System.out.println("ORF 1+:" + s); 
 
-        }	
+
+       
         
         
 //mRNA listed as codons
