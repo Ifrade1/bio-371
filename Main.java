@@ -88,9 +88,7 @@ ArrayList<String> AmRNA =  (ArrayList<String>) ORFA.clone();
 ArrayList<String> ORFB = new ArrayList<>(); 
 ArrayList<String> BmRNA =  (ArrayList<String>) ORFB.clone();
 	    
-System.out.println("mRNA listed");
 
-//mRNA listed for ORFA
 for (i=0, i<ORFA.length(), i++) {
 	String s = ORFA.get(i);
 	for (k=0, k<s.lengh(); k++) {
@@ -101,7 +99,6 @@ for (i=0, i<ORFA.length(), i++) {
 	System.out.println("ORF 1+:" + s );
 }	    
 
-//mRNA listed for ORFB
 for (i=0, i<ORFB.length(), i++) {
 	String s = ORFB.get(i);
 	for (k=0, k<s.lengh(); k++) {
@@ -112,23 +109,25 @@ for (i=0, i<ORFB.length(), i++) {
 	System.out.println("ORF 1+:" + s );
 }	  
 
-//mRNA listed as codons
-System.out.println("mRNA listed as codons");
-
 	
-
-
-/*mRNA: Copy ORF ArrayList--- change T to U
+/* mRNA: Copy ORF ArrayList--- change T to U
 tRNA print it -----------------------------------------------------------------------------------Elena
 Transcribe it by pairings
-Amino acids - use mod to keep track of position in the codon---------------------------Issy
-(if i mod 3  == 0)
-If array[i] = ‘u’
-If array [i+1] == ‘c’ then the amino acid is ser
-Else if array[i+1] == ‘u’
-If array[i+2] == ‘u’ || ‘c’ then amino acid is phe
-Else if array[i+2] == ‘a’ || or ‘g’ then amino acid is leu
-Else if array[i+1] == ‘a’
+Amino acids - use mod to keep track of position in the codon---------------------------Issy */
+ ArrayList<String> Amino = new ArrayList<String>();
+(if i mod 3  == 0){
+if (array[i] == ‘u’)||(array[i] == 'U'){
+	if (array [i+1] == ‘c’){
+		// then the amino acid is ser
+	}
+	else if (array[i+1] == ‘u’){
+		if (array[i+2] == ‘u’ || ‘c’){
+		}
+		// then amino acid is phe		
+		else( if array[i+2] == ‘a’ ||  ‘g’){
+		}
+			//then amino acid is leu
+	else if array[i+1] == ‘a’
 If array [i+2] == u || c then amino acid is tyr
 Else if array[i+2] == ‘a’ || ‘g’ then stop
 Else if array[i+1] == ‘g’
