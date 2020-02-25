@@ -61,6 +61,7 @@ class Nucleo {
         final ArrayList<String> ORFB = new ArrayList<String>();
         final ArrayList<String> ORFlocB = new ArrayList<String>();
         String ORFSB = "";
+	String ORFBgood = "";
 
         //////////////////// makes complementary strand in complementDNAfrom DNA, reads
         //////////////////// 5' to 3'
@@ -116,6 +117,9 @@ class Nucleo {
                             ORFSB = ORFSB + "" + complementDNA.get(i);
                             ORFSB = ORFSB + "" + complementDNA.get(i+1);
                             ORFSB = ORFSB + "" + complementDNA.get(i+2);
+				     
+			    ORFBgood = ORFSB;
+		    	    i = i + 2;
                             
                             break;
                         }
@@ -131,9 +135,11 @@ class Nucleo {
                     i++;
                     }
 
-                    
-                    ORFB.add(ORFSB);
+                    if (ORFBgood =! "") {
+                    	ORFB.add(ORFSB);
+		    }
                     ORFSB = "";
+		    ORFBgood = "";
                 }
 
                 
