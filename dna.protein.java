@@ -169,7 +169,7 @@ class Nucleo {
                 AmRNA.set(i, "U");
             }
             }
-            System.out.println("ORF 1+:" + 
+            System.out.println("ORF 1+:" + s); 
         }	    
 
         for (int i=0; i<ORFB.length(); i++) {
@@ -179,6 +179,8 @@ class Nucleo {
                 BmRNA.set(i, "U");
             }
             }
+	    System.out.println("ORF 1+:" + s); 
+
         }	
         
         
@@ -189,7 +191,7 @@ ArrayList<String> codons = new ArrayList<String>();
 	String orf = AmRNA.get(i);
 		for (k=1; k<=s.length(); k++) {
 			codons.add(orf[k]);
-			If (k%3==0) {
+			if (k%3==0) {
 			codons.add("-");	
             }
 }
