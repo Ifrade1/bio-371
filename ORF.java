@@ -16,8 +16,6 @@ public class ORF {
     // String inputS = "ccccggttatccccccgaggggagggcgagcgatcccccgctaacatattgttaccagtgacgcagctgtgtattctgcacaggtggccaacgggttccacacttcacagatggtggggatcccggcaaagggcgtgtgtttgcggcccaacacaggcgtagactacgacggcgcctactcagacgcagctcgtgcggcgtgaataacgtactcatcccaactgattctcggcaatctacggagcgacacgattatcaacggctgtctagcagttctaatctcttgccacggtcgtaaaagcctccaagagactgatcatacccatcggcgcagaggtgacacggcgccggtgggtagcggactttgggtcagccgcagttcggcaggggacaggccctg";
     String inputS = "atgaaatagtttttatgaaatgatgatgaaatgaatga";
 
-    //What to do if ORF extends outside of string?
-
     ArrayList<Character> inputA = new ArrayList <Character>();
 
     for (int i=0; i < inputS.length(); i++) {
