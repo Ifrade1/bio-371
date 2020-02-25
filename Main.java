@@ -96,7 +96,7 @@ for (i=0, i<ORFA.length(), i++) {
 		AmRNA.set(i, "U");
 	}
 	}
-	System.out.println("ORF 1+:" + 
+	System.out.println("ORF 1+:" + s );
 }	    
 
 for (i=0, i<ORFB.length(), i++) {
@@ -106,7 +106,9 @@ for (i=0, i<ORFB.length(), i++) {
 		BmRNA.set(i, "U");
 	}
 	}
-}	    
+	System.out.println("ORF 1+:" + s );
+}	  
+
 	
 
 
