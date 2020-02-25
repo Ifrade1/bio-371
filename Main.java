@@ -158,31 +158,33 @@ if (array[i] == ‘u’)||(array[i] == 'U'){  //Starts with U
 if (array[i] = ‘c’)
 	if (array [i+1] == ‘c’) //then the amino acid is pro
 	else (if array[i+1] == ‘u’) // then the amino acid is leu
-	else if array[i+1] == ‘a’ //
-If array [i+2] == u || c then amino acid is his
-Else if array[i+2] == ‘a’ || ‘g’ then amino acid is gln
-Else if array[i+1] == ‘g’ then amino acid is arg
+	else if (array[i+1] == 'a'){ //
+		if (array [i+2] == 'u' || 'c' )// then amino acid is his
+		Else if (array[i+2] == ‘a’ || ‘g’) //then amino acid is gln
+			}
+Else if (array[i+1] == ‘g’) // then amino acid is arg
 
 
-If array[i] = ‘a’
-If array [i+1] == ‘c’  then the amino acid is thr
-Else if array[i+1] == ‘u’
-If array[i+2] == ‘u’ || ‘c’ || ‘a’  then amino acid is ile
-Else if array[i+2] ==  ‘g’ then amino acid is met
-Else if array[i+1] == ‘a’
-If array [i+2] == u || c then amino acid is asn
-Else if array[i+2] == ‘a’ || ‘g’ then amino acid is lys
-Else if array[i+1] == ‘g’
-If array [i+2] == u || c then amino acid is ser
-Else if array[i+2] == ‘a’ then amino acid is arg
-If array[i] = ‘g’
-If array [i+1] == ‘c’  then the amino acid is ala
-Else if array[i+1] == ‘u’ then amino acid is val
-else if array[i+1] == ‘a’
-if array [i+2] == u || c then amino acid is asp
-else if array[i+2] == ‘a’ || ‘g’ then amino acid is glu
-else if array[i+1] == ‘g’ then amino acid is gly
+if array[i] = ‘a’
+	if array [i+1] == ‘c’  //then the amino acid is thr
+	else if array[i+1] == ‘u’
+		if (array[i+2] == ‘u’ || ‘c’ || ‘a’)  //then amino acid is ile
+		else if( array[i+2] ==  ‘g’)//then amino acid is met
+	else if array[i+1] == ‘a’{
+		if (array [i+2] == 'u' || 'c') //then amino acid is asn
+		else if array[i+2] == ‘a’ || ‘g’ //then amino acid is lys
+	else if array[i+1] == ‘g’
+		if (array [i+2] == 'u' || 'c') // then amino acid is ser
+		else if (array[i+2] == ‘a’) //then amino acid is arg
 
+if array[i] = ‘g’{
+	if (array [i+1] == ‘c’ ) //then the amino acid is ala
+	else (if array[i+1] == ‘u’) then amino acid is val
+	else if (array[i+1] == ‘a’)
+		if (array [i+2] == 'u' || 'c' ) //then amino acid is asp
+		else if (array[i+2] == ‘a’ || ‘g’) // then amino acid is glu
+	else if (array[i+1] == ‘g’) //then amino acid is gly
+		}
 
 length 100-10,000
 Polarity matters- flip if want(correct orientation)
