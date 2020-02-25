@@ -111,7 +111,8 @@ for (i=0, i<ORFB.length(), i++) {
 
 
 
-//mRNA listed as codons---Aretha, repeat with BmRNA
+
+//mRNA listed as codons
 System.out.println("mRNA listed as codons");
 For (i=0; i<AmRNA.length(); i++) {
 ArrayList<String> codons = new ArrayList<String>();
@@ -119,11 +120,13 @@ ArrayList<String> codons = new ArrayList<String>();
 		For (k=1; k<=s.length(); k++) {
 			codons.add(orf[k]);
 			If (k%3==0) {
-			codons.add(“ “);	
+			codons.add(“-“);	
 }
 }
 System.out.println("ORF 1+:" + codons);
 }
+
+
 
 
 	
