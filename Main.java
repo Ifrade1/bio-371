@@ -109,11 +109,28 @@ for (i=0, i<ORFB.length(), i++) {
 	System.out.println("ORF 1+:" + s );
 }	  
 
+
+
+//mRNA listed as codons---Aretha, repeat with BmRNA
+System.out.println("mRNA listed as codons");
+For (i=0; i<AmRNA.length(); i++) {
+ArrayList<String> codons = new ArrayList<String>();
+	String orf = AmRNA.get(i);
+		For (k=1; k<=s.length(); k++) {
+			codons.add(orf[k]);
+			If (k%3==0) {
+			codons.add(“ “);	
+}
+}
+System.out.println("ORF 1+:" + codons);
+}
+
+
 	
 /* mRNA: Copy ORF ArrayList--- change T to U
 tRNA print it -----------------------------------------------------------------------------------Elena
 Transcribe it by pairings
-Amino acids - use mod to keep track of position in the codon---------------------------Issy */
+Amino acids - use mod to keep track of position in the codon---------------------------Issy 
  ArrayList<String> Amino = new ArrayList<String>();
 (if i mod 3  == 0){
 if (array[i] == ‘u’)||(array[i] == 'U'){
