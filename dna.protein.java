@@ -160,13 +160,13 @@ class Nucleo {
                 
 
         for (int i=0; i<ORFA.length(); i++) {
-            ArrayList<Character> s = ORFA.get(i);
-            for (int k=0; k<s.length(); k++) {
-            	if (s.charAt(k)=='T') {
-               	 	set(k, ‘U’);
+            ArrayList<Character> orf = ORFA.get(i);
+            for (int k=0; k<orf.length(); k++) {
+            	if (orf.charAt(k)=='T') {
+               	 	orf.set(k, ‘U’);
 		}
-		String str = s.toString();
-		AmRNA.add(str);
+		String smRNA = orf.toString();
+		AmRNA.add(smRNA);
 	
            
             }
@@ -180,10 +180,10 @@ class Nucleo {
         
 //mRNA listed as codons
 System.out.println("mRNA listed as codons");
-For (i=0; i<AmRNA.length(); i++) {
+for (int i=0; i<AmRNA.length(); i++) {
 ArrayList<String> codons = new ArrayList<String>();
 	String orf = AmRNA.get(i);
-		for (k=1; k<=s.length(); k++) {
+		for (int k=1; k<=s.length(); k++) {
 			codons.add(orf[k]);
 			if (k%3==0) {
 			codons.add("-");	
