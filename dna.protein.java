@@ -86,7 +86,7 @@ class Nucleo {
 
 
         //finds ORF in complementDNA
-        for (int i=0; (i + 2) < complementDNA.size(); i++) {
+        for (int i=complementDNA.size()-1; (i - 2) >= 0; i--) {
                 
 
 
