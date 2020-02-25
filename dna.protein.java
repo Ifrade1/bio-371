@@ -12,8 +12,6 @@ import java.util.*; //include .Scanner
 import java.util.ArrayList;
 import java.io.FileNotFoundException;
 
-
-
 class Nucleo {
     public static void main(final String arg[]) {
 
@@ -32,11 +30,12 @@ class Nucleo {
             final Scanner filo = new Scanner(example);
 
             longWord = filo.nextLine();
-
+//The user inputs y to indicate 5 direction,
             if ((or == 'Y') || (or == 'y')) {
                 for (int i = 0; i < longWord.length(); i++) {
                     DNA.add(longWord.charAt(i));
-                }
+		}
+//anyother input causes this to be read in from 3-> 5 direction
             } else {
                 for (int i = longWord.length() - 1; i > 0; i--) {
                     DNA.add(longWord.charAt(i));
@@ -155,35 +154,31 @@ class Nucleo {
         
         /*
         
-        ArrayList<String> AmRNA =  new ArrayList<String>();
-        ArrayList<String> BmRNA =  new ArrayList<String>();
+        ArrayList<String> AmRNA =  (ArrayList<String>) ORFA.clone();
+        ArrayList<String> BmRNA =  (ArrayList<String>) ORFB.clone();
                 
 
         for (int i=0; i<ORFA.length(); i++) {
-            ArrayList<Character> orf = ORFA.get(i);
-            for (int k=0; k<orf.length(); k++) {
-            	if (orf.charAt(k)=='T') {
-               	 	orf.set(k, ‘U’);
+            ArrayList<Character> s = ORFA.get(i);
+            for (int k=0; k<s.length(); k++) {
+            	if (s.charAt(k)=='T') {
+               	 	set(k, ‘U’);
 		}
-		String smRNA = orf.toString();
-		AmRNA.add(smRNA);
+		String str = s.toString();
+		AmRNA.add(str);
 	
            
             }
             System.out.println("ORF 1+:" + str); 
         }	    
-
-
-
-       
-        
+	
         
 //mRNA listed as codons
 System.out.println("mRNA listed as codons");
-for (int i=0; i<AmRNA.length(); i++) {
+For (i=0; i<AmRNA.length(); i++) {
 ArrayList<String> codons = new ArrayList<String>();
 	String orf = AmRNA.get(i);
-		for (int k=1; k<=s.length(); k++) {
+		for (k=1; k<=s.length(); k++) {
 			codons.add(orf[k]);
 			if (k%3==0) {
 			codons.add("-");	
