@@ -60,7 +60,7 @@ class Nucleo {
         final ArrayList<Character> complementDNA = new ArrayList<Character>(); // new complement stran
         final ArrayList<String> ORFB = new ArrayList<String>();
         final ArrayList<String> ORFlocB = new ArrayList<String>();
-        String ORFSB = "atg";
+        String ORFSB = "";
 
         //////////////////// makes complementary strand in complementDNAfrom DNA, reads
         //////////////////// 5' to 3'
@@ -98,7 +98,7 @@ class Nucleo {
                 
                 
 
-                for (int o = i; (o + 2) < complementDNA.size(); o++) {
+                for (int o = i; (o + 2) < DNA.size(); o++) {
 
                     
 
@@ -106,16 +106,16 @@ class Nucleo {
                         
                         
 
-                        if (complementDNA.get(i) == 't') {
+                        if (DNA.get(i) == 't') {
                              if
-                            ((complementDNA.get(i+1) == 'a' && complementDNA.get(i+2) == 'g') ||
-                            (complementDNA.get(i+1) == 'a' && complementDNA.get(i+2) == 'a') ||
-                            (complementDNA.get(i+1) == 'g' && complementDNA.get(i+2) == 'a'))
+                            ((DNA.get(i+1) == 'a' && DNA.get(i+2) == 'g') ||
+                            (DNA.get(i+1) == 'a' && DNA.get(i+2) == 'a') ||
+                            (DNA.get(i+1) == 'g' && DNA.get(i+2) == 'a'))
                          {
                             System.out.println("STOP codon found at " + i);
-                            ORFSB = ORFSB + "" + complementDNA.get(i);
-                            ORFSB = ORFSB + "" + complementDNA.get(i+1);
-                            ORFSB = ORFSB + "" + complementDNA.get(i+2);
+                            ORFSB = ORFSB + "" + DNA.get(i);
+                            ORFSB = ORFSB + "" + DNA.get(i+1);
+                            ORFSB = ORFSB + "" + DNA.get(i+2);
                             
                             break;
                         }
@@ -126,14 +126,14 @@ class Nucleo {
                     }
 
                     
-
-                    ORFSB = ORFSB + "" + complementDNA.get(i);
+                    System.out.println(DNA.get(i));
+                    ORFSB = ORFSB + "" + DNA.get(i);
                     i++;
                     }
 
                     
                     ORFB.add(ORFSB);
-                    ORFSB = "atg";
+                    ORFSB = "";
                 }
 
                 
@@ -147,7 +147,7 @@ class Nucleo {
 
         }
         System.out.printf("\nORFs are: " + ORFB);
-            System.out.printf("\nORFs at: " + ORFlocB);            
+        System.out.printf("\nORFs at: " + ORFlocB);            
 
 
 
@@ -166,7 +166,7 @@ class Nucleo {
 
         for (int i=0; i<ORFA.length(); i++) {
             String s = ORFA.get(i);
-            for (k=0, k<s.lengh(); k++) {
+            for (k=0;k<s.lengh(); k++) {
             if ORFA.get(i)=="T" {
                 AmRNA.set(i, "U");
             }
