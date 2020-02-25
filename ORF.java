@@ -13,8 +13,8 @@ public class ORF {
 
   public static void main(String[] args){
 
-    // String inputS = "ccccggttatccccccgaggggagggcgagcgatcccccgctaacatattgttaccagtgacgcagctgtgtattctgcacaggtggccaacgggttccacacttcacagatggtggggatcccggcaaagggcgtgtgtttgcggcccaacacaggcgtagactacgacggcgcctactcagacgcagctcgtgcggcgtgaataacgtactcatcccaactgattctcggcaatctacggagcgacacgattatcaacggctgtctagcagttctaatctcttgccacggtcgtaaaagcctccaagagactgatcatacccatcggcgcagaggtgacacggcgccggtgggtagcggactttgggtcagccgcagttcggcaggggacaggccctg";
-    String inputS = "atgaaatagtttttatgaaatgatgatgaaatgaatga";
+    String inputS = "ccccggttatccccccgaggggagggcgagcgatcccccgctaacatattgttaccagtgacgcagctgtgtattctgcacaggtggccaacgggttccacacttcacagatggtggggatcccggcaaagggcgtgtgtttgcggcccaacacaggcgtagactacgacggcgcctactcagacgcagctcgtgcggcgtgaataacgtactcatcccaactgattctcggcaatctacggagcgacacgattatcaacggctgtctagcagttctaatctcttgccacggtcgtaaaagcctccaagagactgatcatacccatcggcgcagaggtgacacggcgccggtgggtagcggactttgggtcagccgcagttcggcaggggacaggccctg";
+    // String inputS = "atgaaatagtttttatgaaatgatgatgaaatgaatga";
 
     //What to do if ORF extends outside of string?
 
