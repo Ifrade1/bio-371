@@ -199,7 +199,7 @@ class Nucleo {
       }
     }
     //System.out.println(inputA);
-    System.out.println("ORFs are: " + ORFA);
+    System.out.println("Template ORFs are: " + ORFA);
     //System.out.println("ORFs at: " + ORFloc);
 
 
