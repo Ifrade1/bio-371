@@ -88,7 +88,9 @@ ArrayList<String> AmRNA =  (ArrayList<String>) ORFA.clone();
 ArrayList<String> ORFB = new ArrayList<>(); 
 ArrayList<String> BmRNA =  (ArrayList<String>) ORFB.clone();
 	    
+System.out.println("mRNA listed");
 
+//mRNA listed for ORFA
 for (i=0, i<ORFA.length(), i++) {
 	String s = ORFA.get(i);
 	for (k=0, k<s.lengh(); k++) {
@@ -99,6 +101,7 @@ for (i=0, i<ORFA.length(), i++) {
 	System.out.println("ORF 1+:" + s );
 }	    
 
+//mRNA listed for ORFB
 for (i=0, i<ORFB.length(), i++) {
 	String s = ORFB.get(i);
 	for (k=0, k<s.lengh(); k++) {
@@ -108,6 +111,9 @@ for (i=0, i<ORFB.length(), i++) {
 	}
 	System.out.println("ORF 1+:" + s );
 }	  
+
+//mRNA listed as codons
+System.out.println("mRNA listed as codons");
 
 	
 
