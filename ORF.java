@@ -16,6 +16,8 @@ public class ORF {
     // String inputS = "ccccggttatccccccgaggggagggcgagcgatcccccgctaacatattgttaccagtgacgcagctgtgtattctgcacaggtggccaacgggttccacacttcacagatggtggggatcccggcaaagggcgtgtgtttgcggcccaacacaggcgtagactacgacggcgcctactcagacgcagctcgtgcggcgtgaataacgtactcatcccaactgattctcggcaatctacggagcgacacgattatcaacggctgtctagcagttctaatctcttgccacggtcgtaaaagcctccaagagactgatcatacccatcggcgcagaggtgacacggcgccggtgggtagcggactttgggtcagccgcagttcggcaggggacaggccctg";
     String inputS = "atgaaatagtttttatgaaatgatgatgaaatgaatga";
 
+    //What to do if ORF extends outside of string?
+
     ArrayList<Character> inputA = new ArrayList <Character>();
 
     for (int i=0; i < inputS.length(); i++) {
@@ -24,13 +26,14 @@ public class ORF {
     }
 
     ArrayList<String> ORFA = new ArrayList<String>();
-    ArrayList<String> ORFloc = new ArrayList<String>();
+    //ArrayList<String> ORFloc = new ArrayList<String>();
     String ORFS = new String();
+    String ORFgood = new String();
 
     for (i=0; (i + 2) < inputA.size(); i++) {
       if ((inputA.get(i) == 'a') && (inputA.get(i+1) == 't') && (inputA.get(i+2)) == 'g') {
         //System.out.println("ORF found at " + i);
-        ORFloc.add("" + i);
+        //ORFloc.add("" + i);
 
         for (int o = 0; i + 2 < inputA.size(); o++) {
           if (o != 0 && o%3 == 0) {
@@ -44,6 +47,7 @@ public class ORF {
                   ORFS = ORFS + "" + inputA.get(i);
                   ORFS = ORFS + "" + inputA.get(i+1);
                   ORFS = ORFS + "" + inputA.get(i+2);
+                  ORFgood = ORFS;
                   i = i+2;
                   break;
               }
@@ -52,12 +56,17 @@ public class ORF {
           ORFS = ORFS + "" + inputA.get(i);
           i++;
         }
-        ORFA.add(ORFS);
+
+        if (ORFgood != "") {
+          ORFA.add(ORFgood);
+        }
+
         ORFS = "";
+        ORFgood = "";
       }
     }
     //System.out.println(inputA);
     System.out.println("ORFs are: " + ORFA);
-    System.out.println("ORFs at: " + ORFloc);
+    //System.out.println("ORFs at: " + ORFloc);
   }
 }
