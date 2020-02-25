@@ -91,7 +91,7 @@ ArrayList<String> BmRNA =  (ArrayList<String>) ORFB.clone();
 
 for (i=0, i<ORFA.length(), i++) {
 	String s = ORFA.get(i);
-	for (k=0, k<s.lengh(); k++) {
+	for (k=0, k<s.length(); k++) {
 		if ORFA.get(i)=="T" {
 			AmRNA.set(i, "U");
 		}
@@ -130,11 +130,12 @@ System.out.println("ORF 1+:" + codons);
 
 
 	 mRNA: Copy ORF ArrayList--- change T to U
-tRNA print it -----------------------------------------------------------------------------------Elena
-Transcribe it by pairings
-Amino acids - use mod to keep track of position in the codon---------------------------Issy 
- ArrayList<String> Amino = new ArrayList<String>();
-(if i mod 3  == 0){
+//tRNA print it -----------------------------------------------------------------------------------Elena
+//Transcribe it by pairings
+//Amino acids - use mod to keep track of position in the codon---------------------------Issy 
+//I need to turn this into a class, so i don't need to copy and paste this to run it for both orf
+/* ArrayList<String> Amino = new ArrayList<String>();
+for (int i = 0; i < ){
 if (array[i] == ‘u’)||(array[i] == 'U'){  //Starts with U
 	if (array [i+1] == ‘c’){
 		// then the amino acid is ser
@@ -160,9 +161,9 @@ if (array[i] = ‘c’)
 	else (if array[i+1] == ‘u’) // then the amino acid is leu
 	else if (array[i+1] == 'a'){ //
 		if (array [i+2] == 'u' || 'c' )// then amino acid is his
-		Else if (array[i+2] == ‘a’ || ‘g’) //then amino acid is gln
+		else if (array[i+2] == ‘a’ || ‘g’) //then amino acid is gln
 			}
-Else if (array[i+1] == ‘g’) // then amino acid is arg
+	else if (array[i+1] == ‘g’) // then amino acid is arg
 
 
 if array[i] = ‘a’
@@ -185,8 +186,8 @@ if array[i] = ‘g’{
 		else if (array[i+2] == ‘a’ || ‘g’) // then amino acid is glu
 	else if (array[i+1] == ‘g’) //then amino acid is gly
 		}
-
-length 100-10,000
+		*/
+/* length 100-10,000
 Polarity matters- flip if want(correct orientation)
 Print open reading frames, mRNA, tRNA
 
