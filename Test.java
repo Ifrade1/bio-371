@@ -1,6 +1,7 @@
 /* This is a simple Java program.
    FileName : "HelloWorld.java". */
 
+//use cd Desktop, cd bio371 to access the local directory
 //javac Test.java
 //java Test
 
