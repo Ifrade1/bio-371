@@ -223,11 +223,13 @@ class Nucleos {
 
         //////////////////////////Transcribe ORFS--------------------------------------------------------------------Aretha
         
-        /*
+
         
-        ArrayList<String> AmRNA =  (ArrayList<String>) ORFA.clone();
-        ArrayList<String> BmRNA =  (ArrayList<String>) ORFB.clone();
-                
+        ArrayList<String> AmRNA  = new ArrayList<String>();
+        AmRNA = OFRA;
+        ArrayList<String> BmRNA = new ArrayList<String>();
+        BmRNA =  ORFB;
+        /*        
         for (int i=0; i<ORFA.size(); i++) {
             String s = ORFA.get(i);
             for (int k=0; k<s.length(); k++) {
