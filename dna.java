@@ -113,13 +113,12 @@ class Nucleos {
                          {
                             //System.out.println("STOP codon found at " + i);
                             ORFSB = ORFSB + "" + complementDNA.get(i);
-                            complementDNA.set(i, complementDNA.get(i).toUpperCase(complementDNA.get(i)));
-
+                            complementDNA.set(i, MakeUpperCase(complementDNA.get(i)));
                             ORFSB = ORFSB + "" + complementDNA.get(i+1);
-                            complementDNA.set(i+1, complementDNA.get(i+1).toUpperCase(complementDNA.get(i+1)));
+                            complementDNA.set(i+1, MakeUpperCase(complementDNA.get(i+1)));
 
                             ORFSB = ORFSB + "" + complementDNA.get(i+2);
-                            complementDNA.set(i+2, complementDNA.get(i+2).toUpperCase(complementDNA.get(i+2)));
+                            complementDNA.set(i+2, MakeUpperCase(complementDNA.get(i+2)));
 
 				     
 			                ORFBgood = ORFSB;
@@ -136,7 +135,7 @@ class Nucleos {
                     
                    // System.out.println(DNA.get(i));
                     ORFSB = ORFSB + "" + complementDNA.get(i);
-                    complementDNA.set(i, complementDNA.get(i).toUpperCase(complementDNA.get(i)));
+                    complementDNA.set(i, MakeUpperCase(complementDNA.get(i)));
                     i++;
                     }
 
@@ -190,13 +189,13 @@ class Nucleos {
               {
                   //System.out.println("STOP codon found at " + i);
                   ORFS = ORFS + "" + DNA.get(i);
-                    DNA.set(i, DNA.get(i).toUpperCase(DNA.get(i)));
+                    DNA.set(i, MakeUpperCase(DNA.get(i)));
 
                   ORFS = ORFS + "" + DNA.get(i+1);
-                  DNA.set(i+1, DNA.get(i+1).toUpperCase(DNA.get(i+1)));
+                  DNA.set(i+1, MakeUpperCase(DNA.get(i+1)));
 
                   ORFS = ORFS + "" + DNA.get(i+2);
-                  DNA.set(i+2, DNA.get(i+2).toUpperCase(DNA.get(i+2)));
+                  DNA.set(i+2, MakeUpperCase(DNA.get(i+2)));
 
                   ORFgood = ORFS;
                   i = i+2;
@@ -205,7 +204,7 @@ class Nucleos {
             }
           }
           ORFS = ORFS + "" + DNA.get(i);
-          DNA.set(i, DNA.get(i).toUpperCase(DNA.get(i)));
+          DNA.set(i, MakeUpperCase(DNA.get(i)));
           i++;
         }
 
@@ -224,7 +223,7 @@ class Nucleos {
 
         //////////////////////////Transcribe ORFS--------------------------------------------------------------------Aretha
         
-        
+        /*
         
         ArrayList<String> AmRNA =  (ArrayList<String>) ORFA.clone();
         ArrayList<String> BmRNA =  (ArrayList<String>) ORFB.clone();
@@ -248,7 +247,7 @@ class Nucleos {
 	    System.out.println("ORF 1+:" + s); 
         }	
         
-        /*
+        
         //mRNA listed as codons
         
         System.out.println("mRNA listed as codons");
@@ -273,6 +272,7 @@ class Nucleos {
 
             switch (letter) {
                 case ('a'):
+                    
                     tRNA.add('U');
                     break;
                 case ('t'):
@@ -312,5 +312,22 @@ class Nucleos {
          System.out.printf("\nTemplate ORFs are: " + ORFA);
     }
 
+
+    public static char MakeUpperCase(char let){
+        switch(let){
+            case('a'):
+                return 'A';
+            case('t'):
+                return 'T';
+            case('g'):
+                return 'G';
+            case('c'):
+                return 'C';
+            case('u'):
+                return 'U';
+
+        }
+        return 'D';
     }
-   
+}
+
