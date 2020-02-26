@@ -122,8 +122,7 @@ class Nucleo {
 
                         }
                     }
-
-                    
+           
                     System.out.println(DNA.get(i));
                     ORFSB = ORFSB + "" + DNA.get(i);
                     i++;
@@ -134,61 +133,16 @@ class Nucleo {
                     ORFSB = "";
                 }
 
-                
-
-                
-                
-
-            
-
         }
         System.out.printf("\nORFs are: " + ORFB);
         System.out.printf("\nORFs at: " + ORFlocB);            
 
+///////NEW: lists ORFs from ORIG DNA strand as codons (Aretha)
+	    System.out.println("DNA listed as codons");
+	    ArrayList<String> ORFAcodons = new ArrayList<String>();
 
-
-
-
-
-        //////////////////////////Transcribe ORFS--------------------------------------------------------------------Aretha
-        
-        /*
-        
-        ArrayList<String> AmRNA =  new ArrayList<String>();
-        ArrayList<String> BmRNA =  new ArrayList<String>();
-                
-
-        for (int i=0; i<ORFA.size(); i++) {
-        ArrayList<Character> mRNA = new ArrayList<Character>();
-        String s = ORFA.get(i);
-	
-        char[] mrna = s.toCharArray();
-	
-        for (int k=0; k<s.length(); k++) {
-                    if (s.charAt(k)=='T') {
-                            mrna[k] = 'U';
-                    }
-	}
-          
-	String RNA = new String(mrna);
-        AmRNA.add(RNA);
-
-        }
-         System.out.println("+ ORF: " +AmRNA);
-                
-//repeat the same for BmRNA
-         System.out.println("+ ORF: " +BmRNA);
-
-	
-        
-                    //mRNA listed as codons
-
-                    ArrayList<String> mRNAcodons = new ArrayList<String>();
-
-
-                    System.out.println("mRNA listed as codons");
-                    for (int i=0; i<AmRNA.size(); i++) {
-                      String orf = AmRNA.get(i);
+                    for (int i=0; i<ORFA.size(); i++) {
+                      String orf = ORFA.get(i);
                       char[] orf_char = orf.toCharArray();
                       String codons = new String();
                     		for (int k=1; k<=orf_char.length; k++) {
@@ -197,14 +151,84 @@ class Nucleo {
                     			codons += '-';
                                 }
                               }
-                      mRNAcodons.add(codons);
+                    ORFAcodons.add(codons);
+                    System.out.println("ORF :" + ORFAcodons);
+                    }
+	    
+///////NEW: lists ORFs from ORIG DNA strand as codons (Aretha)
+System.out.println("");
+System.out.println("DNA listed as codons");
+ArrayList<String> ORFAcodons = new ArrayList<String>();
+    for (int i=0; i<ORFA.size(); i++) {
+          String orf = ORFA.get(i);
+          char[] orf_char = orf.toCharArray();
+          String codons = new String();
+                for (int k=1; k<=orf_char.length; k++) {
+                    			codons += orf_char[k-1];
+                    			if (k%3==0 && k != orf_char.length) {
+                    			codons += '-';
+                          }
+                }
+        ORFAcodons.add(codons);
+      }
+System.out.println("+ ORF :" + ORFAcodons);
+
+
+
+
+        //////////////////////////Transcribe ORFS--------------------------------------------------------------------Aretha
+        
+        /*
+//AmRNA is for orig strand, BmRNA is for complementary strand
+ArrayList<String> AmRNA =  new ArrayList<String>();
+ArrayList<String> BmRNA =  new ArrayList<String>();
+                
+
+/////transcribes ORIG strand into mRNA
+System.out.println("");
+System.out.println("mRNA");
+
+for (int i=0; i<ORFA.size(); i++) {
+        ArrayList<Character> mRNA = new ArrayList<Character>();
+        String s = ORFA.get(i);
+        char[] mrna = s.toCharArray();
+            for (int k=0; k<s.length(); k++) {
+                    if (s.charAt(k)=='T') {
+                            mrna[k] = 'U';
+                    }
+            }
+                          String RNA = new String(mrna);
+                          AmRNA.add(RNA);
+    }
+  System.out.println("+ ORF: " + AmRNA);
+                
+
+//repeat the same for BmRNA
+      
+
+	
+        
+//mRNA from ORIG strand listed as codons
+
+ArrayList<String> mRNAcodonsA = new ArrayList<String>();
+
+System.out.println("");
+System.out.println("mRNA listed as codons");
+    for (int i=0; i<AmRNA.size(); i++) {
+        String orf = AmRNA.get(i);
+        char[] orf_char = orf.toCharArray();
+        String codons = new String();
+              	for (int k=1; k<=orf_char.length; k++) {
+                  	codons += orf_char[k-1];
+                    			if (k%3==0 && k != orf_char.length) {
+                    			codons += '-';
+                          }
+               }
+                      mRNAcodonsA.add(codons);
+                      System.out.println("+ ORF: " + mRNAcodonsA);
                       //  String sepcodons=new String (cars);
                       //  mRNAcodons.add(cars);
-
-                    System.out.println("ORF :" + codons);
-                    }
-
-                          }
+    
 
 
 
