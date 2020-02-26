@@ -158,19 +158,28 @@ class Nucleo {
         ArrayList<String> BmRNA =  (ArrayList<String>) ORFB.clone();
                 
 
-        for (int i=0; i<ORFA.length(); i++) {
-            ArrayList<Character> s = ORFA.get(i);
+        for (int i=0; i<ORFA.size(); i++) {
+        ArrayList<Character> mRNA = new ArrayList<Character>();
+        String s = ORFA.get(i);
+        //System.out.println(ORFA.get(i));
+        char[] mrna = s.toCharArray();
             for (int k=0; k<s.length(); k++) {
-            	if (s.charAt(k)=='T') {
-               	 	set(k, ‘U’);
-		}
-		String str = s.toString();
-		AmRNA.add(str);
-	
-           
-            }
-            System.out.println("ORF 1+:" + str); 
-        }	    
+
+                    if (s.charAt(k)=='T') {
+                            mrna[k] = 'U';
+                    }
+}
+                          String RNA = new String(mrna);
+                          //System.out.println(RNA);
+                          AmRNA.add(RNA);
+                          //System.out.println("ORF 1+:" + RNA);
+
+                                //}
+                            }
+                            System.out.println("+ ORF: " +AmRNA);
+                          }
+
+                        }
 	
         
 //mRNA listed as codons
