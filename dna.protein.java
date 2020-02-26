@@ -181,19 +181,30 @@ class Nucleo {
 
 	
         
-//mRNA listed as codons
-System.out.println("mRNA listed as codons");
-For (i=0; i<AmRNA.length(); i++) {
-ArrayList<String> codons = new ArrayList<String>();
-	String orf = AmRNA.get(i);
-		for (k=1; k<=s.length(); k++) {
-			codons.add(orf[k]);
-			if (k%3==0) {
-			codons.add("-");	
-            }
-}
-System.out.println("ORF 1+:" + codons);
-}
+                    //mRNA listed as codons
+
+                    ArrayList<String> mRNAcodons = new ArrayList<String>();
+
+
+                    System.out.println("mRNA listed as codons");
+                    for (int i=0; i<AmRNA.size(); i++) {
+                      String orf = AmRNA.get(i);
+                      char[] orf_char = orf.toCharArray();
+                      String codons = new String();
+                    		for (int k=1; k<=orf_char.length; k++) {
+                    			codons += orf_char[k-1];
+                    			if (k%3==0 && k != orf_char.length) {
+                    			codons += '-';
+                                }
+                              }
+                      mRNAcodons.add(codons);
+                      //  String sepcodons=new String (cars);
+                      //  mRNAcodons.add(cars);
+
+                    System.out.println("ORF :" + codons);
+                    }
+
+                          }
 
 
 
