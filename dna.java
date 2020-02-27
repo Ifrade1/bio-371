@@ -32,15 +32,29 @@ class Nucleos {
             final File example = new File("example.txt");
             final Scanner filo = new Scanner(example);
 
-            longWord = filo.nextLine();
+            longWord = filo.nextLine().toLowerCase();
 
             if ((or == 'Y') || (or == 'y')) {
                 for (int i = 0; i < longWord.length(); i++) {
-                    DNA.add(longWord.charAt(i));
+                    switch(longWord.charAt(i)){
+                        case('a'):
+                        case('t'):
+                        case('g'):
+                        case('c'):
+                            DNA.add(longWord.charAt(i));
+                        break;
+                    }
                 }
             } else {
                 for (int i = longWord.length() - 1; i > 0; i--) {
-                    DNA.add(longWord.charAt(i));
+                    switch(longWord.charAt(i)){
+                        case('a'):
+                        case('t'):
+                        case('g'):
+                        case('c'):
+                            DNA.add(longWord.charAt(i));
+                        break;
+                    }
                 }
             }
             filo.close();
