@@ -324,14 +324,15 @@ for (int i=0; i<ORFB.size(); i++) {
         final ArrayList<String> tRNAB = new ArrayList<String>();
 
         for (final String letter : ORFAcodons) {
-
-            tRNAA.add(MaketRNA(letter));
+            int leg = letter.length();
+            tRNAA.add(MaketRNA(letter.substring(0, leg-4)));
 
         }
 
-        for(final String letter: ORFBcodons){
 
-            tRNAB.add(MaketRNA(letter));
+        for(final String letter: ORFBcodons){
+            int leg = letter.length();
+            tRNAB.add(MaketRNA(letter.substring(0, leg-4)));
 
         }
 
@@ -413,6 +414,7 @@ for (int i=0; i<ORFB.size(); i++) {
     public static String MaketRNA(String let){
            
         for(int i = 0; i<let.length(); i++){
+
             switch (let.charAt(i)) {
                     case ('a'):
                         let = let.substring(0,i)+'u' + let.substring(i+1);
@@ -432,4 +434,3 @@ for (int i=0; i<ORFB.size(); i++) {
     }
 
 }
-
