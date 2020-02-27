@@ -204,8 +204,7 @@ class Nucleos {
         
         ArrayList<String> AmRNA = new ArrayList<String>();
         ArrayList<String> BmRNA = new ArrayList<String>();
-        //ArrayList<String> AmRNA =  (ArrayList<String>) ORFA.clone();
-        //ArrayList<String> BmRNA =  (ArrayList<String>) ORFB.clone();
+        
                 
         for (int i=0; i<ORFA.size(); i++) {
             
@@ -234,7 +233,38 @@ class Nucleos {
         for(final String letter : ORFB){
             BmRNA.add(MakeRNA(letter));
         }
-
+	    
+	    
+////////////updated transcription code 2/27
+/*
+for (int i=0; i<ORFA.size(); i++) {
+        ArrayList<Character> mRNA = new ArrayList<Character>();
+        String s = ORFA.get(i);
+        char[] mrna = s.toCharArray();
+            for (int k=0; k<s.length(); k++) {
+                    if (s.charAt(k)=='T') {
+                            mrna[k] = 'U';
+                    }
+            }
+       String RNA = new String(mrna);
+       AmRNA.add(RNA);
+}
+			  
+for (int i=0; i<ORFB.size(); i++) {
+        ArrayList<Character> mRNA = new ArrayList<Character>();
+        String s = ORFB.get(i);
+        char[] mrna = s.toCharArray();
+            for (int k=0; k<s.length(); k++) {
+                    if (s.charAt(k)=='T') {
+                            mrna[k] = 'U';
+                    }
+            }
+       String RNA = new String(mrna);
+       BmRNA.add(RNA);
+ }
+*/
+	    
+	    
         
         /////////////////////////////////////////////mRNA listed as codons//////////////////////////
         
