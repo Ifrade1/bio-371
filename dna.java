@@ -13,7 +13,6 @@ import java.util.ArrayList;
 import java.io.FileNotFoundException;
 
 
-
 class Nucleos {
     public static void main(final String arg[]) {
 
@@ -277,11 +276,9 @@ for (int i=0; i<ORFB.size(); i++) {
        BmRNA.add(RNA);
  }
 */
-	    
-	    
+	    	    
         
-        /////////////////////////////////////////////mRNA listed as codons//////////////////////////
-        
+        /////////////////////////////////////////////mRNA listed as codons/////////////////////////
         
         ///////////////////////////////////////////////////////////////////////////////
         
