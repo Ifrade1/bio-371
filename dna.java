@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.io.FileNotFoundException;
 
 
+
 class Nucleos {
     public static void main(final String arg[]) {
 
@@ -28,31 +29,32 @@ class Nucleos {
         final char or = scnr.next().charAt(0);
 
         try {
-            final File example = new File("example.txt");
+            final File example = new File("test.txt");
             final Scanner filo = new Scanner(example);
+            while(filo.hasNextLine()){
+                longWord = filo.nextLine().toLowerCase();
 
-            longWord = filo.nextLine().toLowerCase();
-
-            if ((or == 'Y') || (or == 'y')) {
-                for (int i = 0; i < longWord.length(); i++) {
-                    switch(longWord.charAt(i)){
-                        case('a'):
-                        case('t'):
-                        case('g'):
-                        case('c'):
-                            DNA.add(longWord.charAt(i));
-                        break;
+                if ((or == 'Y') || (or == 'y')) {
+                    for (int i = 0; i < longWord.length(); i++) {
+                        switch(longWord.charAt(i)){
+                            case('a'):
+                            case('t'):
+                            case('g'):
+                            case('c'):
+                                DNA.add(longWord.charAt(i));
+                            break;
+                        }
                     }
-                }
-            } else {
-                for (int i = longWord.length() - 1; i > 0; i--) {
-                    switch(longWord.charAt(i)){
-                        case('a'):
-                        case('t'):
-                        case('g'):
-                        case('c'):
-                            DNA.add(longWord.charAt(i));
-                        break;
+                } else {
+                    for (int i = longWord.length() - 1; i > 0; i--) {
+                        switch(longWord.charAt(i)){
+                            case('a'):
+                            case('t'):
+                            case('g'):
+                            case('c'):
+                                DNA.add(longWord.charAt(i));
+                            break;
+                        }
                     }
                 }
             }
@@ -89,21 +91,21 @@ class Nucleos {
 
 
        /////////////////////////////finds ORF in complementDNA///////////////////////////////
-        for (int i=0; (i + 2) < complementDNA.size(); i++) {
-            
+        for (int i=0; (i + 10) < complementDNA.size(); i++) {
+            //System.out.println(i);
             if ((complementDNA.get(i) == 'a') && (complementDNA.get(i+1) == 't') && (complementDNA.get(i+2)) == 'g') {
                 
                 ORFlocB.add(" " + i);
 
-                for (int o = i; (o + 2) < complementDNA.size(); o++) {
+                for (int o = 0; (o + 2) < complementDNA.size(); o++) {
 
                     if (o != 0 && o%3 == 0) {                
 
                         if (complementDNA.get(i) == 't') {
                             if
                             ((complementDNA.get(i+1) == 'a' && complementDNA.get(i+2) == 'g') ||
-                            (DNA.get(i+1) == 'a' && DNA.get(i+2) == 'a') ||
-                            (DNA.get(i+1) == 'g' && DNA.get(i+2) == 'a'))
+                            (complementDNA.get(i+1) == 'a' && complementDNA.get(i+2) == 'a') ||
+                            (complementDNA.get(i+1) == 'g' && complementDNA.get(i+2) == 'a'))
                             {
                             //System.out.println("STOP codon found at " + i);
                             ORFSB = ORFSB + "" + complementDNA.get(i);
@@ -113,8 +115,12 @@ class Nucleos {
 
                             ORFSB = ORFSB + "" + complementDNA.get(i+2);
                             complementDNA.set(i+2, MakeUpperCase(complementDNA.get(i+2)));
-				     
-			                ORFBgood = ORFSB;
+                     
+                            ORFBgood = ORFSB;
+			                /*if (o>=150) {
+                                ORFBgood = ORFSB;
+                                //System.out.println(o);
+                            }*/
 		    	            i = i + 2;
                             
                             break;
@@ -140,7 +146,8 @@ class Nucleos {
         String ORFS = new String();
         String ORFgood = new String();
 
-        for (int i=0; (i + 2) < DNA.size(); i++) {
+        for (int i=0; (i + 3) < DNA.size(); i++) {
+            //System.out.println(i);
             if ((DNA.get(i) == 'a') && (DNA.get(i+1) == 't') && (DNA.get(i+2)) == 'g') {
 
                 for (int o = 0; i + 2 < DNA.size(); o++) {
@@ -150,7 +157,7 @@ class Nucleos {
                             ((DNA.get(i+1) == 'a' && DNA.get(i+2) == 'g') ||
                             (DNA.get(i+1) == 'a' && DNA.get(i+2) == 'a') ||
                             (DNA.get(i+1) == 'g' && DNA.get(i+2) == 'a')){
-                                
+                                //System.out.println("STOP codon found at " + i);
                                 ORFS = ORFS + "" + DNA.get(i);
                                 DNA.set(i, MakeUpperCase(DNA.get(i)));
 
@@ -161,6 +168,10 @@ class Nucleos {
                                 DNA.set(i+2, MakeUpperCase(DNA.get(i+2)));
 
                                 ORFgood = ORFS;
+                                /*if (o>=150) {
+                                    ORFgood = ORFS;
+                                }*/
+
                                 i = i+2;
                                 break;
                             }
@@ -276,9 +287,11 @@ for (int i=0; i<ORFB.size(); i++) {
        BmRNA.add(RNA);
  }
 */
-	    	    
+	    
+	    
         
-        /////////////////////////////////////////////mRNA listed as codons/////////////////////////
+        /////////////////////////////////////////////mRNA listed as codons//////////////////////////
+        
         
         ///////////////////////////////////////////////////////////////////////////////
         
@@ -336,14 +349,14 @@ for (int i=0; i<ORFB.size(); i++) {
 
         for (final String letter : ORFAcodons) {
             int leg = letter.length();
-            tRNAA.add(MaketRNA(letter.substring(0, leg-4)));
+            tRNAA.add(MaketRNA(letter));
 
         }
 
 
         for(final String letter: ORFBcodons){
             int leg = letter.length();
-            tRNAB.add(MaketRNA(letter.substring(0, leg-4)));
+            tRNAB.add(MaketRNA(letter));
 
         }
 
@@ -368,27 +381,58 @@ for (int i=0; i<ORFB.size(); i++) {
          }
 
         System.out.printf("\n\nDNA ORFs listed");
-        System.out.printf("\nORF 1+:" + ORFA);
-        System.out.printf("\nORF 1-:" + ORFB);
+        //System.out.printf("\nORF 1+:");
+         for(int i=0;i<ORFA.size();i++){
+             System.out.printf("\n\nORF 1+:"+ORFA.get(i));
+         }
+        //System.out.printf("\nORF 1-:");
+        for(int i=0;i<ORFB.size();i++){
+            System.out.printf("\n\nORF 1-:"+ORFB.get(i));
+        }
         
         System.out.printf("\n\nDNA ORFs listed as codons");
-        System.out.printf("\nORF 1+:" + ORFAcodons);
-        System.out.printf("\nORF 1-:" + ORFBcodons);
+        //System.out.printf("\nORF 1+:" + ORFAcodons);
+        for(int i=0;i<ORFAcodons.size();i++){
+            System.out.printf("\n\nORF 1+: "+ORFAcodons.get(i));
+        }
+        //System.out.printf("\nORF 1-:" + ORFBcodons);
+        for(int i=0;i<ORFBcodons.size();i++){
+            System.out.printf("\n\nORF 1-: " + ORFBcodons.get(i));
+        }
 
         System.out.printf("\n\nmRNA listed");
-        System.out.printf("\nORF 1+:" + AmRNA);
-        System.out.printf("\nORF 1-:" + BmRNA);
+        //System.out.printf("\nORF 1+:" + AmRNA);
+        for(int i=0;i<AmRNA.size();i++){
+            System.out.printf("\n\nmRNA 1+: " + AmRNA.get(i));
+        }
+        //System.out.printf("\nORF 1-:" + BmRNA);
+        for(int i=0;i<BmRNA.size();i++){
+            System.out.printf("\n\nmRNA 1-: " + BmRNA.get(i));
+        }
 
         System.out.printf("\n\nmRNA listed as codons");
-        System.out.printf("\nORF 1+:" + AmRNAcodons);
-        System.out.printf("\nORF 1-:" + BmRNAcodons);
+        //System.out.printf("\nORF 1+:" + AmRNAcodons);
+        for(int i=0;i<AmRNAcodons.size();i++){
+            System.out.printf("\n\nmRNA 1+: " + AmRNAcodons.get(i));
+        }
+        //System.out.printf("\nORF 1-:" + BmRNAcodons);
+        for(int i=0;i<BmRNAcodons.size();i++){
+            System.out.printf("\n\nmRNA 1-: " + BmRNAcodons.get(i));
+        }
 
         System.out.printf("\n\ntRNA listed");
-        System.out.printf("\nORF 1+:"+ tRNAA);
-        System.out.printf("\nORF 1-:" + tRNAB);
+        //System.out.printf("\nORF 1+:"+ tRNAA);
+        for(int i=0;i<tRNAA.size();i++){
+            System.out.printf("\n\ntRNA 1+: " + tRNAA.get(i));
+        } 
+        //System.out.printf("\nORF 1-:" + tRNAB);
+        for(int i=0;i<tRNAB.size();i++){
+            System.out.printf("\n\ntRNA 1-: " + tRNAB.get(i));
+        }
         
          //System.out.printf("\nnon-Template ORFs are: " + ORFB);
          //System.out.printf("\nTemplate ORFs are: " + ORFA);
+         System.out.printf("\n\n\n\n\t\t\t:)\n");
     }
 
 
