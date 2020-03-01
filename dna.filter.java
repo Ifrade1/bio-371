@@ -404,56 +404,56 @@ for (int i=0; i<ORFB.size(); i++) {
              System.out.print(compdna);
          }
 
-        System.out.printf("\n\nDNA ORFs listed");
+                System.out.printf("\n\nDNA ORFs listed");
         //System.out.printf("\nORF 1+:");
          for(int i=0;i<ORFA.size();i++){
-             System.out.printf("\n\nORF 1+:"+ORFA.get(i));
+             System.out.printf("\n\nORF" +(1+i)+ "+:"+ORFA.get(i));
          }
         //System.out.printf("\nORF 1-:");
         for(int i=0;i<ORFB.size();i++){
-            System.out.printf("\n\nORF 1-:"+ORFB.get(i));
+            System.out.printf("\n\nORF "+(1+i)+ "-:"+ORFB.get(i));
         }
-
+        
         System.out.printf("\n\nDNA ORFs listed as codons");
         //System.out.printf("\nORF 1+:" + ORFAcodons);
         for(int i=0;i<ORFAcodons.size();i++){
-            System.out.printf("\n\nORF 1+: "+ORFAcodons.get(i));
+            System.out.printf("\n\nORF"+ (i+1) +"+: "+ORFAcodons.get(i));
         }
         //System.out.printf("\nORF 1-:" + ORFBcodons);
         for(int i=0;i<ORFBcodons.size();i++){
-            System.out.printf("\n\nORF 1-: " + ORFBcodons.get(i));
+            System.out.printf("\n\nORF "+(1+i) +"-: " + ORFBcodons.get(i));
         }
 
         System.out.printf("\n\nmRNA listed");
         //System.out.printf("\nORF 1+:" + AmRNA);
         for(int i=0;i<AmRNA.size();i++){
-            System.out.printf("\n\nmRNA 1+: " + AmRNA.get(i));
+            System.out.printf("\n\nmRNA " + (i+1)+ "+: " + AmRNA.get(i));
         }
         //System.out.printf("\nORF 1-:" + BmRNA);
         for(int i=0;i<BmRNA.size();i++){
-            System.out.printf("\n\nmRNA 1-: " + BmRNA.get(i));
+            System.out.printf("\n\nmRNA " + (1+i) + "-: " + BmRNA.get(i));
         }
 
         System.out.printf("\n\nmRNA listed as codons");
         //System.out.printf("\nORF 1+:" + AmRNAcodons);
         for(int i=0;i<AmRNAcodons.size();i++){
-            System.out.printf("\n\nmRNA 1+: " + AmRNAcodons.get(i));
+            System.out.printf("\n\nmRNA " + (1+i) + "+: " + AmRNAcodons.get(i));
         }
         //System.out.printf("\nORF 1-:" + BmRNAcodons);
         for(int i=0;i<BmRNAcodons.size();i++){
-            System.out.printf("\n\nmRNA 1-: " + BmRNAcodons.get(i));
+            System.out.printf("\n\nmRNA " + (1+i)+ "-: " + BmRNAcodons.get(i));
         }
 
         System.out.printf("\n\ntRNA listed");
         //System.out.printf("\nORF 1+:"+ tRNAA);
         for(int i=0;i<tRNAA.size();i++){
-            System.out.printf("\n\ntRNA 1+: " + tRNAA.get(i));
-        }
+            System.out.printf("\n\ntRNA "+ (i+1) +"+: " + tRNAA.get(i));
+        } 
         //System.out.printf("\nORF 1-:" + tRNAB);
         for(int i=0;i<tRNAB.size();i++){
-            System.out.printf("\n\ntRNA 1-: " + tRNAB.get(i));
+            System.out.printf("\n\ntRNA " + (1+i) + "-: " + tRNAB.get(i));
         }
-
+        
          //System.out.printf("\nnon-Template ORFs are: " + ORFB);
          //System.out.printf("\nTemplate ORFs are: " + ORFA);
          System.out.printf("\n\n\n\n\t\t\t:)\n");
