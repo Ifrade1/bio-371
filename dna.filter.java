@@ -24,12 +24,15 @@ class Nucleos {
         final ArrayList<Character> DNA = new ArrayList<Character>();
         String longWord;
         ArrayList<String> codons = new ArrayList<String>();
-
+	String fileName;
+	
+	System.out.println("What file?");
+	fileName = scnr.next();
         System.out.println("Is it 5->3?(Y/N): ");
         final char or = scnr.next().charAt(0);
 
         try {
-            final File example = new File("example.txt");
+            final File example = new File(fileName);
             final Scanner filo = new Scanner(example);
             while(filo.hasNextLine()){
                 longWord = filo.nextLine().toLowerCase();
@@ -189,7 +192,7 @@ class Nucleos {
                                 //FILTER CODE
                                   if (o>=minsize) {
                                                 ORFgood = ORFS;
-                                                System.out.println("o is greater than minsize");
+                                                //System.out.println("o is greater than minsize");
                                          }
 
 
