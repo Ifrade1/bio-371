@@ -33,6 +33,7 @@ class Nucleos {
             final Scanner filo = new Scanner(example);
             while(filo.hasNextLine()){
                 longWord = filo.nextLine().toLowerCase();
+		longWord.replaceAll("\\s+","");
 
                 if ((or == 'Y') || (or == 'y')) {
                     for (int i = 0; i < longWord.length(); i++) {
