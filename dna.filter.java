@@ -45,7 +45,7 @@ class Nucleos {
                 if ((or == 'Y') || (or == 'y')) {
                     for (int i = 0; i < longWord.length(); i++) {
                         if(longWord.charAt(i) == '>'){
-                            dnaName = longWord;
+                            dnaName = longWord.substring(i+1, longWord.indexOf(' '));
                             System.out.println("Name found: " + dnaName);
                             break;
                         }
@@ -64,7 +64,7 @@ class Nucleos {
                 } else {
                     for (int i = longWord.length() - 1; i >= 0; i--) {
                         if(longWord.charAt(i) == '>'){
-                            dnaName = longWord;
+                            dnaName = longWord.substring(i+1, longWord.indexOf(' '));
                             System.out.println("Name found: " + dnaName);
                             break;
                         }
