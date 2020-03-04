@@ -407,8 +407,11 @@ for (int j = 0; j < ORFBoth.size(); j++){
             if (currentORF.charAt(i+2) == 'u' || currentORF.charAt(i+2) =='t'|| currentORF.charAt(i+2) == 'c'){//then amino acid is tyr
                 amino = amino + "" +'Y';
             }	
-            else if (currentORF.charAt(i+2) == 'a' || currentORF.charAt(i+2) =='g'){   //then stop  
-                amino = amino + "####";
+            else if (currentORF.charAt(i+2) == 'a') {
+                amino = amino + "##UAA#";
+            }
+            else if (currentORF.charAt(i+2) =='g'){   //then stop  
+                amino = amino + "##UAG##";
             }
         }
         else if (currentORF.charAt(i+1) == 'g'){
@@ -416,7 +419,7 @@ for (int j = 0; j < ORFBoth.size(); j++){
                 amino = amino + "" + 'C';
             }
             else if(currentORF.charAt(i+2) == 'a'){ // then stop
-                amino = amino + "#####";
+                amino = amino + "#UGA#";
                 }
             if (currentORF.charAt(i+2) == 'g'){ // then amino acid is trp
                 amino = amino + "" +'W';
@@ -449,7 +452,7 @@ for (int j = 0; j < ORFBoth.size(); j++){
         amino = amino + "" +'T';
         }
         else if (currentORF.charAt(i+1) == 'u' || currentORF.charAt(i+1) =='t'){
-            if (currentORF.charAt(i+2) == 'u' || currentORF.charAt(i+1) =='t'|| currentORF.charAt(i+1) == 'c' || currentORF.charAt(i+1) =='a'){ //then amino acid is ile
+            if (currentORF.charAt(i+2) == 'u' || currentORF.charAt(i+2) =='t'|| currentORF.charAt(i+1) == 'c' || currentORF.charAt(i+2) =='a'){ //then amino acid is ile
                 amino = amino + "" +'I';
             } 
             else if (currentORF.charAt(i+2) == 'g'){//then amino acid is met
