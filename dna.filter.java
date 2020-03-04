@@ -24,10 +24,10 @@ class Nucleos {
         final ArrayList<Character> DNA = new ArrayList<Character>();
         String longWord;
         ArrayList<String> codons = new ArrayList<String>();
-	String fileName;
+	    String dnaName = "unknown";
 	
-	System.out.println("What file?");
-	fileName = scnr.next();
+	    System.out.println("What file?");
+	    String fileName = scnr.next();
         System.out.println("Is it 5->3?(Y/N): ");
         final char or = scnr.next().charAt(0);
 
@@ -35,11 +35,23 @@ class Nucleos {
             final File example = new File(fileName);
             final Scanner filo = new Scanner(example);
             while(filo.hasNextLine()){
-                longWord = filo.nextLine().toLowerCase();
-		longWord.replaceAll("\\s+","");
+
+                longWord = filo.nextLine();//.toLowerCase();
+
+
+                longWord.replaceAll("\\s+","");
+                
 
                 if ((or == 'Y') || (or == 'y')) {
                     for (int i = 0; i < longWord.length(); i++) {
+                        if(longWord.charAt(i) == '>'){
+                            dnaName = longWord;
+                            System.out.println("Name found: " + dnaName);
+                            break;
+                        }
+                        else{
+                            longWord = longWord.toLowerCase();
+                        }
                         switch(longWord.charAt(i)){
                             case('a'):
                             case('t'):
@@ -50,7 +62,15 @@ class Nucleos {
                         }
                     }
                 } else {
-                    for (int i = longWord.length() - 1; i > 0; i--) {
+                    for (int i = longWord.length() - 1; i >= 0; i--) {
+                        if(longWord.charAt(i) == '>'){
+                            dnaName = longWord;
+                            System.out.println("Name found: " + dnaName);
+                            break;
+                        }
+                        else{
+                            longWord = longWord.toLowerCase();
+                        }
                         switch(longWord.charAt(i)){
                             case('a'):
                             case('t'):
@@ -301,7 +321,6 @@ for (int i=0; i<ORFA.size(); i++) {
        String RNA = new String(mrna);
        AmRNA.add(RNA);
 }
-
 for (int i=0; i<ORFB.size(); i++) {
         ArrayList<Character> mRNA = new ArrayList<Character>();
         String s = ORFB.get(i);
@@ -396,6 +415,7 @@ for (int i=0; i<ORFB.size(); i++) {
 
         scnr.close();
 
+        System.out.printf("\n\n" + dnaName + "\n\n");
         System.out.printf("\nORFs and indicate/highlight on the non-template +DNA strand (5’->3’)\n");
         for (final Character dna : DNA){
             System.out.print(dna);
@@ -461,6 +481,7 @@ for (int i=0; i<ORFB.size(); i++) {
          //System.out.printf("\nnon-Template ORFs are: " + ORFB);
          //System.out.printf("\nTemplate ORFs are: " + ORFA);
          System.out.printf("\n\n\n\n\t\t\t:)\n");
+
     }
 
 
@@ -515,6 +536,5 @@ for (int i=0; i<ORFB.size(); i++) {
         }
         return let;
     }
-	
 
 }
