@@ -389,37 +389,36 @@ ArrayList<String> aminoArray = new ArrayList<String>();
 String amino = "";
 for (int j = 0; j < ORFBoth.size(); j++){
     currentORF = ORFBoth.get(j);
-    amino = "";
-    for (int i = 0; i< amino.length(); i= i+3){
+    for (int i = 0; i< currentORF.length(); i= i+3){
 /////U 
     if (currentORF.charAt(i) == 'u' || currentORF.charAt(i) =='t'){  //Starts with U  || 'T' || 't')
-        if (currentORF.charAt(i) == 'c'){ //UC*
-            amino = amino + "" +'S';// then the amino acid is ser	
+        if (currentORF.charAt(i+1) == 'c'){ //UC*
+               amino.concat("S");// then the amino acid is ser	
         }
-        else if (currentORF.charAt(i) == 'u' || currentORF.charAt(i) =='t'){
-            if (currentORF.charAt(i) == 'u' || currentORF.charAt(i) =='t'|| currentORF.charAt(i) == 'c'){
-                amino = amino + "" +'F';// then amino acid is phe
+        else if (currentORF.charAt(i+1) == 'u' || currentORF.charAt(i+1) =='t'){ 
+            if (currentORF.charAt(i+2) == 'u' || currentORF.charAt(i+2) =='t'|| currentORF.charAt(i+2) == 'c'){
+                amino = amino + "" +'F';// then amino acid is phe //UUC or UUU
             }                    
-            else if(currentORF.charAt(i) == 'a' || currentORF.charAt(i) =='g'){
+            else if(currentORF.charAt(i+1) == 'a' || currentORF.charAt(i+1) =='g'){
                 amino = amino + "" +'L';//then amino acid is leu
             }	
         }
-        else if (currentORF.charAt(i) == 'a'){ 
-            if (currentORF.charAt(i) == 'u' || currentORF.charAt(i) =='t'|| currentORF.charAt(i) == 'c'){//then amino acid is tyr
+        else if (currentORF.charAt(i+1) == 'a'){ 
+            if (currentORF.charAt(i+2) == 'u' || currentORF.charAt(i+2) =='t'|| currentORF.charAt(i+2) == 'c'){//then amino acid is tyr
                 amino = amino + "" +'Y';
             }	
-            else if (currentORF.charAt(i) == 'a' || currentORF.charAt(i) =='g'){   //then stop  
-                amino = amino + " ";
+            else if (currentORF.charAt(i+2) == 'a' || currentORF.charAt(i+2) =='g'){   //then stop  
+                amino = amino + "####";
             }
         }
-        else if (currentORF.charAt(i) == 'g'){
-            if (currentORF.charAt(i) == 'u' || currentORF.charAt(i) =='t'|| currentORF.charAt(i) == 'c'){  //then amino acid is cys
+        else if (currentORF.charAt(i+1) == 'g'){
+            if (currentORF.charAt(i+2) == 'u' || currentORF.charAt(i+2) =='t'|| currentORF.charAt(i+2) == 'c'){  //then amino acid is cys
                 amino = amino + "" + 'C';
             }
-            else if(currentORF.charAt(i) == 'a'){ // then stop
-                amino = amino + "  ";
+            else if(currentORF.charAt(i+2) == 'a'){ // then stop
+                amino = amino + "#####";
                 }
-            if (currentORF.charAt(i) == 'g'){ // then amino acid is trp
+            if (currentORF.charAt(i+2) == 'g'){ // then amino acid is trp
                 amino = amino + "" +'W';
             }
         }
@@ -429,28 +428,28 @@ for (int j = 0; j < ORFBoth.size(); j++){
         if (currentORF.charAt(i+1) == 'c'){ //then the amino acid is pro
             amino = amino + "" +'P';
         }
-        else if (currentORF.charAt(i) == 'u' || currentORF.charAt(i) =='t'){ // then the amino acid is leu
+        else if (currentORF.charAt(i+1) == 'u' || currentORF.charAt(i) =='t'){ // then the amino acid is leu
         amino = amino + "" +'L';
         }
         else if (currentORF.charAt(i+1) == 'a'){ //
-                if (currentORF.charAt(i) == 'u' || currentORF.charAt(i) =='t'|| currentORF.charAt(i) == 'c'){// then amino acid is his
+                if (currentORF.charAt(i+2) == 'u' || currentORF.charAt(i+2) =='t'|| currentORF.charAt(i+2) == 'c'){// then amino acid is his
                     amino = amino + "" +'H';
                 }
-                else if (currentORF.charAt(i) == 'a' || currentORF.charAt(i) =='g' ){ //then amino acid is gln
+                else if (currentORF.charAt(i+2) == 'a' || currentORF.charAt(i+2) =='g' ){ //then amino acid is gln
                     amino = amino + "" +'Q';
                 }
+            }
         else if (currentORF.charAt(i+1) =='g'){  // then amino acid is arg
             amino = amino + "" +'R';
                 }
             }
-        }
     //////A
     if  (currentORF.charAt(i) == 'a'){
         if (currentORF.charAt(i+1) == 'c') {  //then the amino acid is thr
         amino = amino + "" +'T';
         }
-        else if (currentORF.charAt(i) == 'u' || currentORF.charAt(i) =='t'){
-            if (currentORF.charAt(i) == 'u' || currentORF.charAt(i) =='t'|| currentORF.charAt(i) == 'c' || currentORF.charAt(i) =='a'){ //then amino acid is ile
+        else if (currentORF.charAt(i+1) == 'u' || currentORF.charAt(i+1) =='t'){
+            if (currentORF.charAt(i+2) == 'u' || currentORF.charAt(i+1) =='t'|| currentORF.charAt(i+1) == 'c' || currentORF.charAt(i+1) =='a'){ //then amino acid is ile
                 amino = amino + "" +'I';
             } 
             else if (currentORF.charAt(i+2) == 'g'){//then amino acid is met
@@ -458,15 +457,15 @@ for (int j = 0; j < ORFBoth.size(); j++){
             }
         }
         else if (currentORF.charAt(i+1) == 'a'){
-            if (currentORF.charAt(i) == 'u' || currentORF.charAt(i) =='t'|| currentORF.charAt(i) == 'c'){
+            if (currentORF.charAt(i+2) == 'u' || currentORF.charAt(i+2) =='t'|| currentORF.charAt(i+2) == 'c'){
                 amino = amino + "" +'N';
             } //then amino acid is asn
-            else if (currentORF.charAt(i) == 'a' || currentORF.charAt(i) =='g'){
+            else if (currentORF.charAt(i+2) == 'a' || currentORF.charAt(i+2) =='g'){
                 amino = amino + "" +'K';
             } //then amino acid is lys
         }
         else if (currentORF.charAt(i+1) =='g'){
-            if (currentORF.charAt(i) == 'u' || currentORF.charAt(i) =='t'|| currentORF.charAt(i) == 'c'){
+            if (currentORF.charAt(i+2) == 'u' || currentORF.charAt(i+2) =='t'|| currentORF.charAt(i+2) == 'c'){
                 amino = amino + "" +'S';
             } // then amino acid is ser
             else if (currentORF.charAt(i+2) == 'a'){
@@ -476,27 +475,28 @@ for (int j = 0; j < ORFBoth.size(); j++){
     }
     ///////G        
     if (currentORF.charAt(i) == 'g'){
-        if (currentORF.charAt(i) == 'c'){
+        if (currentORF.charAt(i+1) == 'c'){
             amino = amino + "" + 'A';  //then the amino acid is ala
         } 
-        else if (currentORF.charAt(i) == 'u' || currentORF.charAt(i) =='t'){
+        else if (currentORF.charAt(i+1) == 'u' || currentORF.charAt(i+1) =='t'){
             amino = amino + "" +'V'; //then amino acid is val
         } 
         else if (currentORF.charAt(i+1) == 'a'){
-            if (currentORF.charAt(i) == 'u' || currentORF.charAt(i) =='t'|| currentORF.charAt(i) == 'c'){
+            if (currentORF.charAt(i+2) == 'u' || currentORF.charAt(i+2) =='t'|| currentORF.charAt(i+2) == 'c'){
                 amino = amino + "" +'D';  //then amino acid is asp
             }
-            else if (currentORF.charAt(i+2) == 'a' || currentORF.charAt(i) =='g') {// then amino acid is glu
+            else if (currentORF.charAt(i+2) == 'a' || currentORF.charAt(i+2) =='g') {// then amino acid is glu
                 amino = amino + "" +'Q';
             }
         }
-        else if (currentORF.charAt(i) =='g'){ //then amino acid is gly
+        else if (currentORF.charAt(i+1) =='g'){ //then amino acid is gly
             amino = amino + "" +'G';
             }
         }      
-        //System.out.printf("\ntRNA\n");
+       
     }
     aminoArray.add(amino);
+  
 }
         /*for (final Character rna : tRNA) {
             System.out.print(rna);
@@ -562,6 +562,12 @@ for (int j = 0; j < ORFBoth.size(); j++){
         for(int i=0;i<tRNAB.size();i++){
             System.out.printf("\n\ntRNA " + (1+i) + "-: " + tRNAB.get(i));
         }
+        
+///Print out Proteins
+    for(int i=0;i<aminoArray.size();i++){
+    System.out.printf("\n\nProtein " + (1+i) + ": " + aminoArray.get(i));
+        }
+
         
          //System.out.printf("\nnon-Template ORFs are: " + ORFB);
          //System.out.printf("\nTemplate ORFs are: " + ORFA);
