@@ -504,10 +504,10 @@ for (int j = 0; j < ORFBoth.size(); j++){
     }
     ///////G        
     if (currentORF.charAt(i) == 'g'){
-        if (currentORF.charAt(i+1) == 'c'){
+        if (currentORF.charAt(i+1) == 'c'){  //GC*
             amino = amino + "" + 'A';  //then the amino acid is ala
         } 
-        else if (currentORF.charAt(i+1) == 'u' || currentORF.charAt(i+1) =='t'){
+        else if (currentORF.charAt(i+1) == 'u' || currentORF.charAt(i+1) =='t'){ //GC*
             amino = amino + "" +'V'; //then amino acid is val
         } 
         else if (currentORF.charAt(i+1) == 'a'){
@@ -522,7 +522,7 @@ for (int j = 0; j < ORFBoth.size(); j++){
             amino = amino + "" +'G';
             }
         }      
-       
+      amino = ""; 
     }
     aminoArray.add(amino);
   
@@ -601,6 +601,12 @@ for (int j = 0; j < ORFBoth.size(); j++){
          //System.out.printf("\nnon-Template ORFs are: " + ORFB);
          //System.out.printf("\nTemplate ORFs are: " + ORFA);
          System.out.printf("\n\n\n\n\t\t\t:)\n");
+	 ///Print out Proteins
+    for(int i=0;i<aminoArray.size();i++){
+    System.out.printf("\n\nProtein " + (1+i) + ": " + aminoArray.get(i));
+        }
+         System.out.printf("\n\n\n\n\t\t\t:)\n");
+    }
 
     }
 
