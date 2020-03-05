@@ -522,9 +522,10 @@ for (int j = 0; j < ORFBoth.size(); j++){
             amino = amino + "" +'G';
             }
         }      
-      amino = ""; 
+     
     }
     aminoArray.add(amino);
+    amino = ""; 
   
 }
         //System.out.printf("\ntRNA\n");
@@ -606,7 +607,6 @@ for (int j = 0; j < ORFBoth.size(); j++){
     System.out.printf("\n\nProtein " + (1+i) + ": " + aminoArray.get(i));
         }
          System.out.printf("\n\n\n\n\t\t\t:)\n");
-    }
 
     }
 
