@@ -100,7 +100,7 @@ class Nucleos {
 
                 ORFlocB.add(" " + i);
 
-                for (int o = 0; (o + 2) < complementDNA.size(); o++) {
+                for (int o = 0; (i + 2) < complementDNA.size(); o++) {
 
                     if (o != 0 && o%3 == 0) {
 
