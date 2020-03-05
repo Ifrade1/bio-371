@@ -406,7 +406,127 @@ for (int i=0; i<ORFB.size(); i++) {
             tRNAB.add(MaketRNA(letter));
 
         }
-
+///////////////////////Turn open reading frames into amino acids////////////
+ArrayList<String> ORFBoth = new ArrayList<String>();
+ORFBoth.addAll(ORFA);
+ORFBoth.addAll(ORFB);
+String currentORF; 
+ArrayList<String> aminoArray = new ArrayList<String>();
+String amino = "";
+for (int j = 0; j < ORFBoth.size(); j++){
+    currentORF = ORFBoth.get(j);
+    for (int i = 0; i< currentORF.length(); i= i+3){
+/////U 
+    if (currentORF.charAt(i) == 'u' || currentORF.charAt(i) =='t'){  //Starts with U  || 'T' || 't')
+        if (currentORF.charAt(i+1) == 'c'){ //UC*
+            amino = amino + "" +'S';// then the amino acid is ser	
+        }
+        else if (currentORF.charAt(i+1) == 'u' || currentORF.charAt(i+1) =='t'){ 
+            if (currentORF.charAt(i+2) == 'u' || currentORF.charAt(i+2) =='t'|| currentORF.charAt(i+2) == 'c'){
+                amino = amino + "" +'F';// then amino acid is phe //UUC or UUU
+            }                    
+            else if(currentORF.charAt(i+2) == 'a' || currentORF.charAt(i+2) =='g'){
+                amino = amino + "" +'L';//then amino acid is leu
+            }	
+        }
+        else if (currentORF.charAt(i+1) == 'a'){ 
+            if (currentORF.charAt(i+2) == 'u' || currentORF.charAt(i+2) =='t'|| currentORF.charAt(i+2) == 'c'){//then amino acid is tyr
+                amino = amino + "" +'Y';
+            }	
+            else if (currentORF.charAt(i+2) == 'a') {
+                amino = amino + "##UAA#";
+            }
+            else if (currentORF.charAt(i+2) =='g'){   //then stop  
+                amino = amino + "##UAG##";
+            }
+        }
+        else if (currentORF.charAt(i+1) == 'g'){
+            if (currentORF.charAt(i+2) == 'u' || currentORF.charAt(i+2) =='t'|| currentORF.charAt(i+2) == 'c'){  //then amino acid is cys
+                amino = amino + "" + 'C';
+            }
+            else if(currentORF.charAt(i+2) == 'a'){ // then stop
+                amino = amino + "#UGA#";
+                }
+            if (currentORF.charAt(i+2) == 'g'){ // then amino acid is trp
+                amino = amino + "" +'W';
+            }
+        }
+    }
+    ////C
+    if (currentORF.charAt(i) == 'c'){
+        if (currentORF.charAt(i+1) == 'c'){ //then the amino acid is pro
+            amino = amino + "" +'P';
+        }
+        else if (currentORF.charAt(i+1) == 'u' || currentORF.charAt(i+1) =='t'){ // then the amino acid is leu
+        amino = amino + "" +'L';
+        }
+        else if (currentORF.charAt(i+1) == 'a'){ //
+                if (currentORF.charAt(i+2) == 'u' || currentORF.charAt(i+2) =='t'|| currentORF.charAt(i+2) == 'c'){// then amino acid is his
+                    amino = amino + "" +'H';
+                }
+                else if (currentORF.charAt(i+2) == 'a' || currentORF.charAt(i+2) =='g' ){ //then amino acid is gln
+                    amino = amino + "" +'Q';
+                }
+            }
+        else if (currentORF.charAt(i+1) =='g'){  // then amino acid is arg
+            amino = amino + "" +'R';
+                }
+            }
+    //////A
+    if  (currentORF.charAt(i) == 'a'){
+        if (currentORF.charAt(i+1) == 'c') {  //then the amino acid is thr
+        amino = amino + "" +'T';
+        }
+        else if (currentORF.charAt(i+1) == 'u' || currentORF.charAt(i+1) =='t'){
+            if (currentORF.charAt(i+2) == 'u' || currentORF.charAt(i+2) =='t'|| currentORF.charAt(i+2) == 'c' || currentORF.charAt(i+2) =='a'){ //then amino acid is ile
+                amino = amino + "" +'I';
+            } 
+            else if (currentORF.charAt(i+2) == 'g'){//then amino acid is met
+                amino = amino + "" +'M';
+            }
+        }
+        else if (currentORF.charAt(i+1) == 'a'){
+            if (currentORF.charAt(i+2) == 'u' || currentORF.charAt(i+2) =='t'|| currentORF.charAt(i+2) == 'c'){
+                amino = amino + "" +'N';
+            } //then amino acid is asn
+            else if (currentORF.charAt(i+2) == 'a' || currentORF.charAt(i+2) =='g'){
+                amino = amino + "" +'K';
+            } //then amino acid is lys
+        }
+        else if (currentORF.charAt(i+1) =='g'){
+            if (currentORF.charAt(i+2) == 'u' || currentORF.charAt(i+2) =='t'|| currentORF.charAt(i+2) == 'c'){
+                amino = amino + "" +'S'; //AGU or AGC
+            } // then amino acid is ser
+            else if (currentORF.charAt(i+2) == 'a'){
+                amino = amino + "" +'R';
+            } //then amino acid is arg
+        }
+    }
+    ///////G        
+    if (currentORF.charAt(i) == 'g'){
+        if (currentORF.charAt(i+1) == 'c'){
+            amino = amino + "" + 'A';  //then the amino acid is ala
+        } 
+        else if (currentORF.charAt(i+1) == 'u' || currentORF.charAt(i+1) =='t'){
+            amino = amino + "" +'V'; //then amino acid is val
+        } 
+        else if (currentORF.charAt(i+1) == 'a'){
+            if (currentORF.charAt(i+2) == 'u' || currentORF.charAt(i+2) =='t'|| currentORF.charAt(i+2) == 'c'){
+                amino = amino + "" +'D';  //then amino acid is asp
+            }
+            else if (currentORF.charAt(i+2) == 'a' || currentORF.charAt(i+2) =='g') {// then amino acid is glu
+                amino = amino + "" +'E';
+            }
+        }
+        else if (currentORF.charAt(i+1) =='g'){ //then amino acid is gly
+            amino = amino + "" +'G';
+            }
+        }      
+       
+    }
+    aminoArray.add(amino);
+  
+}
         //System.out.printf("\ntRNA\n");
 
         /*for (final Character rna : tRNA) {
