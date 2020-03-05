@@ -14,20 +14,38 @@ class Nucleos {
         final ArrayList<Character> DNA = new ArrayList<Character>();
         String longWord;
         ArrayList<String> codons = new ArrayList<String>();
-
-        System.out.println("Is it 5->3?(Y/N): ");
-        final char or = scnr.next().charAt(0);
+	String dnaName = "unknown";
+	
+	System.out.println("What file?");
+	String fileName = scnr.next();
+        
 
         try {
-            final File example = new File("itscoronatime.txt");
+            final File example = new File(fileName);
             final Scanner filo = new Scanner(example);
+
+            System.out.println("Is it 5->3?(Y/N): ");
+            final char or = scnr.next().charAt(0);
+
             while(filo.hasNextLine()){
-                longWord = filo.nextLine().toLowerCase();
+
+                longWord = filo.nextLine();//.toLowerCase();
+
+
                 longWord.replaceAll("\\s+","");
+                
 
                 if ((or == 'Y') || (or == 'y')) {
                     for (int i = 0; i < longWord.length(); i++) {
-                   // if longWord.charAt(i) !=
+                        if(longWord.charAt(i) == '>'){
+                            
+                            dnaName = longWord.substring(i+1, longWord.indexOf(' '));
+                            System.out.println("Name found: " + dnaName);
+                            break;
+                        }
+                        else{
+                            longWord = longWord.toLowerCase();
+                        }
                         switch(longWord.charAt(i)){
                             case('a'):
                             case('t'):
@@ -38,7 +56,15 @@ class Nucleos {
                         }
                     }
                 } else {
-                    for (int i = longWord.length() - 1; i > 0; i--) {
+                    for (int i = longWord.length() - 1; i >= 0; i--) {
+                        if(longWord.charAt(i) == '>'){
+                            dnaName = longWord.substring(i+1, longWord.indexOf(' '));
+                            System.out.println("Name found: " + dnaName);
+                            break;
+                        }
+                        else{
+                            longWord = longWord.toLowerCase();
+                        }
                         switch(longWord.charAt(i)){
                             case('a'):
                             case('t'):
@@ -51,8 +77,9 @@ class Nucleos {
                 }
             }
             filo.close();
-        } catch (final FileNotFoundException e) {
-            System.out.println("file not found");
+        } 
+	catch (final FileNotFoundException e) {
+        	System.out.println("file not found");
         }
 
 
@@ -87,14 +114,14 @@ class Nucleos {
         Scanner scan = new Scanner(System.in);
         System.out.println("Do you want to filter the size of ORFS?(minimum ORF size if yes, 0 if no)");
         int orfsize =scan.nextInt();
-                  minsize = orfsize-2;
+                  minsize = orfsize-3;
 
         //end filter code
 
 
 
        /////////////////////////////finds ORF in complementDNA///////////////////////////////
-        for (int i=0; (i + 10) < complementDNA.size(); i++) {
+        for (int i=0; (i + 3) < complementDNA.size(); i++) {
             //System.out.println(i);
             if ((complementDNA.get(i) == 'a') && (complementDNA.get(i+1) == 't') && (complementDNA.get(i+2)) == 'g') {
 
@@ -180,7 +207,7 @@ class Nucleos {
                                 //FILTER CODE
                                   if (o>=minsize) {
                                                 ORFgood = ORFS;
-                                                System.out.println("o is greater than minsize");
+                                                //System.out.println("o is greater than minsize");
                                          }
 
 
