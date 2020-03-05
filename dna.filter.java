@@ -100,7 +100,7 @@ class Nucleos {
 
                 ORFlocB.add(" " + i);
 
-                for (int o = 0; (i + 2) < complementDNA.size(); o++) {
+                for (int o = 0; (o + 2) < complementDNA.size(); o++) {
 
                     if (o != 0 && o%3 == 0) {
 
@@ -399,10 +399,10 @@ for (int j = 0; j < ORFBoth.size(); j++){
                 amino = amino + "" +'Y';
             }
             else if (currentORF.charAt(i+2) == 'a') {
-              //  amino = amino + "##UAA#";
+                amino = amino + "##UAA#";
             }
             else if (currentORF.charAt(i+2) =='g'){   //then stop
-              //  amino = amino + "##UAG##";
+               amino = amino + "##UAG##";
             }
         }
         else if (currentORF.charAt(i+1) == 'g'){
@@ -410,7 +410,7 @@ for (int j = 0; j < ORFBoth.size(); j++){
                 amino = amino + "" + 'C';
             }
             else if(currentORF.charAt(i+2) == 'a'){ // then stop
-                //amino = amino + "#UGA#";
+                amino = amino + "#UGA#";
                 }
             if (currentORF.charAt(i+2) == 'g'){ // then amino acid is trp
                 amino = amino + "" +'W';
@@ -462,7 +462,7 @@ for (int j = 0; j < ORFBoth.size(); j++){
             if (currentORF.charAt(i+2) == 'u' || currentORF.charAt(i+2) =='t'|| currentORF.charAt(i+2) == 'c'){
                 amino = amino + "" +'S';
             } // then amino acid is ser
-            else if (currentORF.charAt(i+2) == 'a'){
+            else if (currentORF.charAt(i+2) == 'a'){ //AGG
                 amino = amino + "" +'R';
             } //then amino acid is arg
         }
@@ -480,7 +480,7 @@ for (int j = 0; j < ORFBoth.size(); j++){
                 amino = amino + "" +'D';  //then amino acid is asp
             }
             else if (currentORF.charAt(i+2) == 'a' || currentORF.charAt(i+2) =='g') {// then amino acid is glu
-                amino = amino + "" +'Q';
+                amino = amino + "" +'E';
             }
         }
         else if (currentORF.charAt(i+1) =='g'){ //then amino acid is gly
