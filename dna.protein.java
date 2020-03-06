@@ -518,8 +518,9 @@ for (int j = 0; j < ORFBoth.size(); j++){
     }
     aminoArray.add(amino);
 	amino = "";
-
 }
+///////////////////////end of orf to protein chain section////////////////////////
+	    
         /*for (final Character rna : tRNA) {
             System.out.print(rna);
         }*/
