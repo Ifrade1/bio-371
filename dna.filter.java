@@ -470,7 +470,7 @@ for (int j = 0; j < ORFBoth.size(); j++){
         amino = amino + "" +'T';
         }
         else if (currentORF.charAt(i+1) == 'u' || currentORF.charAt(i+1) =='t'){
-            if (currentORF.charAt(i+2) == 'u' || currentORF.charAt(i+2) =='t'|| currentORF.charAt(i+1) == 'c' || currentORF.charAt(i+2) =='a'){ //then amino acid is ile
+            if (currentORF.charAt(i+2) == 'u' || currentORF.charAt(i+2) =='t'|| currentORF.charAt(i+2) == 'c' || currentORF.charAt(i+2) =='a'){ //then amino acid is ile
                 amino = amino + "" +'I';
             }
             else if (currentORF.charAt(i+2) == 'g'){//then amino acid is met
@@ -490,7 +490,7 @@ for (int j = 0; j < ORFBoth.size(); j++){
                 amino = amino + "" +'S';
             } // then amino acid is ser
             else if (currentORF.charAt(i+2) == 'a' || currentORF.charAt(i+2) == 'g'){ //AGG
-                amino = amino + "" +'R';
+                amino = amino + "" +'R'; //AGA or AGG
             } //then amino acid is arg
         }
     }
@@ -498,20 +498,20 @@ for (int j = 0; j < ORFBoth.size(); j++){
     if (currentORF.charAt(i) == 'g'){
         if (currentORF.charAt(i+1) == 'c'){
             amino = amino + "" + 'A';  //then the amino acid is ala
-        }
+        }//GC*
         else if (currentORF.charAt(i+1) == 'u' || currentORF.charAt(i+1) =='t'){
             amino = amino + "" +'V'; //then amino acid is val
-        }
+        } //GU*
         else if (currentORF.charAt(i+1) == 'a'){
             if (currentORF.charAt(i+2) == 'u' || currentORF.charAt(i+2) =='t'|| currentORF.charAt(i+2) == 'c'){
                 amino = amino + "" +'D';  //then amino acid is asp
             }
             else if (currentORF.charAt(i+2) == 'a' || currentORF.charAt(i+2) =='g') {// then amino acid is glu
-                amino = amino + "" +'E';
+                amino = amino + "" +'E'; //GAG 
             }
         }
         else if (currentORF.charAt(i+1) =='g'){ //then amino acid is gly
-            amino = amino + "" +'G';
+            amino = amino + "" +'G'; //GG*
             }
         }
 
