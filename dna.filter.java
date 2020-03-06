@@ -7,8 +7,7 @@ import java.io.FileNotFoundException;
 class Nucleos {
     public static void main(final String arg[]) {
 
-        //////////////////////// FROM FILE TO ArrayList
-        ///////////////////////////////////// DNA///////////////////////////////////
+        //////////////////////// Scan from file to Char ArrayList
 
         final Scanner scnr = new Scanner(System.in);
         final ArrayList<Character> DNA = new ArrayList<Character>();
@@ -19,7 +18,7 @@ class Nucleos {
 	System.out.println("What file?");
 	String fileName = scnr.next();
         
-
+//sets parameters and prints name
         try {
             final File example = new File(fileName);
             final Scanner filo = new Scanner(example);
@@ -63,7 +62,7 @@ class Nucleos {
                             break;
                         }
                         else{
-                            longWord = longWord.toLowerCase();
+                            longWord = longWord.toLowerCase(); 
                         }
                         switch(longWord.charAt(i)){
                             case('a'):
@@ -83,8 +82,8 @@ class Nucleos {
         }
 
 
-        ////////////////Aretha--make complementary strand, find ORFs of complementary strand
-        final ArrayList<Character> complementDNA = new ArrayList<Character>(); // new complement stran
+        ////////////////makes ArrayList for complementary strand
+        final ArrayList<Character> complementDNA = new ArrayList<Character>(); // new complement strand
         final ArrayList<String> ORFB = new ArrayList<String>();
         final ArrayList<String> ORFlocB = new ArrayList<String>();
         String ORFSB = "";
@@ -108,15 +107,13 @@ class Nucleos {
 
 
 
-        //FILTER CODE (Aretha)
+        //FILTER, sets minimum orf size
         int minsize = 0; //minimum orf size
 
         Scanner scan = new Scanner(System.in);
         System.out.println("Do you want to filter the size of ORFS?(minimum ORF size if yes, 0 if no)");
         int orfsize =scan.nextInt();
                   minsize = orfsize-3;
-
-        //end filter code
 
 
 
@@ -147,8 +144,7 @@ class Nucleos {
                             complementDNA.set(i+2, MakeUpperCase(complementDNA.get(i+2)));
 
 
-//FILTER CODE
-
+//FILTER CODE, adds ORF only if length is greater than minsize
                         if (o>=minsize) {
                                 ORFBgood = ORFSB;
                               //System.out.println(o);
@@ -210,7 +206,6 @@ class Nucleos {
                                                 //System.out.println("o is greater than minsize");
                                          }
 
-
                                 else ORFgood = "";
                                 //FILTER END
 
@@ -233,9 +228,10 @@ class Nucleos {
                 ORFgood = "";
             }
         }
-        ////////////////////////////NEW: lists ORFs from ORIG DNA strand as codons (Aretha)
-
-
+	    
+	    ///////lists ORF as codons
+	    /////for every third char add a dash, excluding last char
+    ////////////////////////////lists ORFs from original DNA strand as codons 
         ArrayList<String> ORFAcodons = new ArrayList<String>();
         for (int i=0; i<ORFA.size(); i++) {
             String orf = ORFA.get(i);
@@ -249,7 +245,7 @@ class Nucleos {
                 }
             ORFAcodons.add(codon);
         }
-
+ ////////////////////////////lists ORFs from complementary DNA strand as codons 
         ArrayList<String> ORFBcodons = new ArrayList<String>();
             for (int i=0; i<ORFB.size(); i++) {
                 String orf = ORFB.get(i);
@@ -266,12 +262,13 @@ class Nucleos {
 
 
 
-        //////////////////////////Transcribe ORFS--------------------------------------------------------------------Aretha
+        //////////////////////////TRANSCRIPTION////
+	    
 
 
         ArrayList<String> AmRNA = new ArrayList<String>();
         ArrayList<String> BmRNA = new ArrayList<String>();
-
+//AmRNA holds mRNA from original DNA strand, BmRNA holds mRNA from complementary strand
 
         for (int i=0; i<ORFA.size(); i++) {
 
@@ -302,41 +299,9 @@ class Nucleos {
         }
 
 
-////////////updated transcription code 2/27
-/*
-for (int i=0; i<ORFA.size(); i++) {
-        ArrayList<Character> mRNA = new ArrayList<Character>();
-        String s = ORFA.get(i);
-        char[] mrna = s.toCharArray();
-            for (int k=0; k<s.length(); k++) {
-                    if (s.charAt(k)=='T') {
-                            mrna[k] = 'U';
-                    }
-            }
-       String RNA = new String(mrna);
-       AmRNA.add(RNA);
-}
-for (int i=0; i<ORFB.size(); i++) {
-        ArrayList<Character> mRNA = new ArrayList<Character>();
-        String s = ORFB.get(i);
-        char[] mrna = s.toCharArray();
-            for (int k=0; k<s.length(); k++) {
-                    if (s.charAt(k)=='T') {
-                            mrna[k] = 'U';
-                    }
-            }
-       String RNA = new String(mrna);
-       BmRNA.add(RNA);
- }
-*/
 
-
-
-        /////////////////////////////////////////////mRNA listed as codons//////////////////////////
-
-
-        ///////////////////////////////////////////////////////////////////////////////
-
+        /////////////////////////////////////////////mRNA from original and complementary DNA strand listed as codons//////////////////////////
+	///for every third char add a dash, excluding last char
         ArrayList<String> AmRNAcodons = new ArrayList<String>();
         for (int i=0; i<AmRNA.size(); i++) {
             String orf = AmRNA.get(i);
@@ -381,7 +346,7 @@ for (int i=0; i<ORFB.size(); i++) {
 
 
         /////////////////////////////////////////////////////////////////////////////
-        ////////////// tRNA/////////////////////////////////////////////////////
+        ////////////// tRNA codons/////////////////////////////////////////////////////
 
         final ArrayList<String> tRNAA = new ArrayList<String>();
         final ArrayList<String> tRNAB = new ArrayList<String>();
@@ -398,7 +363,7 @@ for (int i=0; i<ORFB.size(); i++) {
             tRNAB.add(MaketRNA(letter));
 
         }
-///////////////////////Turn open reading frames into amino acids////////////
+///////////////////////TRANSLATION: Turn open reading frames into amino acids////////////
 ArrayList<String> ORFBoth = new ArrayList<String>();
 ORFBoth.addAll(ORFA);
 ORFBoth.addAll(ORFB);
