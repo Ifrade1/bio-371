@@ -151,10 +151,7 @@ class Nice {
                         }
                       else ORFBgood = "";
 //FILTER END
-
-
 		    	            i = i + 2;
-
                             break;
                             }
                         }
@@ -263,9 +260,7 @@ class Nice {
 
 
         //////////////////////////TRANSCRIPTION////
-	    
-
-
+	   
         ArrayList<String> AmRNA = new ArrayList<String>();
         ArrayList<String> BmRNA = new ArrayList<String>();
 //AmRNA holds mRNA from original DNA strand, BmRNA holds mRNA from complementary strand
