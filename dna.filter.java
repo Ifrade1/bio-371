@@ -411,7 +411,7 @@ for (int j = 0; j < ORFBoth.size(); j++){
 /////U
     if (currentORF.charAt(i) == 'u' || currentORF.charAt(i) =='t'){  //Starts with U  || 'T' || 't')
         if (currentORF.charAt(i+1) == 'c'){ //UC*
-               amino.concat("S");// then the amino acid is ser
+            amino = amino + "" +'S';// then the amino acid is ser
         }
         else if (currentORF.charAt(i+1) == 'u' || currentORF.charAt(i+1) =='t'){
             if (currentORF.charAt(i+2) == 'u' || currentORF.charAt(i+2) =='t'|| currentORF.charAt(i+2) == 'c'){
