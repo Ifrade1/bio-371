@@ -29,10 +29,7 @@ class Nucleos {
             while(filo.hasNextLine()){
 
                 longWord = filo.nextLine();//.toLowerCase();
-
-
                 longWord.replaceAll("\\s+","");
-                
 
                 if ((or == 'Y') || (or == 'y')) {
                     for (int i = 0; i < longWord.length(); i++) {
@@ -203,7 +200,6 @@ class Nucleos {
                                 //FILTER CODE
                                   if (o>=minsize) {
                                                 ORFgood = ORFS;
-                                                //System.out.println("o is greater than minsize");
                                          }
 
                                 else ORFgood = "";
@@ -279,7 +275,6 @@ class Nucleos {
                     AmRNA.set(i, "u");
                 }
             }
-            //System.out.println("ORF-- 1+:" + ORFA.get(i));
         }
         for (int i=0; i<ORFB.size(); i++) {
             String s = ORFB.get(i);
@@ -288,7 +283,6 @@ class Nucleos {
                     BmRNA.set(i, "u");
                 }
             }
-	    //System.out.println("ORF -- 1+:" + s);
         }
 
         for(final String letter : ORFA ){
@@ -341,7 +335,6 @@ class Nucleos {
                     codons.add("-");
                     }
                 }
-        //System.out.println("ORF 1+:" + codons);
         }
 
 
