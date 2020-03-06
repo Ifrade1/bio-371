@@ -557,7 +557,7 @@ for (int j = 0; j < ORFBoth.size(); j++){
     }
 
 
-public static char MakeUpperCase(char let){
+private static char MakeUpperCase(char let){
         switch(let){
             case('a'):
                 return 'A';
@@ -574,7 +574,7 @@ public static char MakeUpperCase(char let){
         return 'D';
     }
 
-    public static String MakeRNA(String let){
+    private static String MakeRNA(String let){
 
         for(int i = 0; i<let.length(); i++){
             switch (let.charAt(i)) {
@@ -587,7 +587,7 @@ public static char MakeUpperCase(char let){
         return let;
     }
 
-    public static String MaketRNA(String let){
+    private static String MaketRNA(String let){
 
         for(int i = 0; i<let.length(); i++){
 
