@@ -517,6 +517,7 @@ for (int j = 0; j < ORFBoth.size(); j++){
 
     }
     aminoArray.add(amino);
+	amino = "";
 
 }
         /*for (final Character rna : tRNA) {
