@@ -417,7 +417,7 @@ for (int j = 0; j < ORFBoth.size(); j++){
             if (currentORF.charAt(i+2) == 'u' || currentORF.charAt(i+2) =='t'|| currentORF.charAt(i+2) == 'c'){
                 amino = amino + "" +'F';// then amino acid is phe //UUC or UUU
             }
-            else if(currentORF.charAt(i+1) == 'a' || currentORF.charAt(i+1) =='g'){
+            else if(currentORF.charAt(i+2) == 'a' || currentORF.charAt(i+2) =='g'){
                 amino = amino + "" +'L';//then amino acid is leu
             }
         }
@@ -447,10 +447,10 @@ for (int j = 0; j < ORFBoth.size(); j++){
     ////C
     if (currentORF.charAt(i) == 'c'){
         if (currentORF.charAt(i+1) == 'c'){ //then the amino acid is pro
-            amino = amino + "" +'P';
+            amino = amino + "" +'P'; //CC*
         }
-        else if (currentORF.charAt(i+1) == 'u' || currentORF.charAt(i) =='t'){ // then the amino acid is leu
-        amino = amino + "" +'L';
+        else if (currentORF.charAt(i+1) == 'u' || currentORF.charAt(i+1) =='t'){ // then the amino acid is leu
+        amino = amino + "" +'L'; //CU*
         }
         else if (currentORF.charAt(i+1) == 'a'){ //
                 if (currentORF.charAt(i+2) == 'u' || currentORF.charAt(i+2) =='t'|| currentORF.charAt(i+2) == 'c'){// then amino acid is his
