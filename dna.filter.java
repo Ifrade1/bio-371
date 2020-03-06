@@ -489,7 +489,7 @@ for (int j = 0; j < ORFBoth.size(); j++){
             if (currentORF.charAt(i+2) == 'u' || currentORF.charAt(i+2) =='t'|| currentORF.charAt(i+2) == 'c'){
                 amino = amino + "" +'S';
             } // then amino acid is ser
-            else if (currentORF.charAt(i+2) == 'a'){ //AGG
+            else if (currentORF.charAt(i+2) == 'a' || currentORF.charAt(i+2) == 'g'){ //AGG
                 amino = amino + "" +'R';
             } //then amino acid is arg
         }
