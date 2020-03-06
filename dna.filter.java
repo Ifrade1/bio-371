@@ -384,10 +384,10 @@ for (int j = 0; j < ORFBoth.size(); j++){
                 amino = amino + "" +'Y';
             }
             else if (currentORF.charAt(i+2) == 'a') {
-                amino = amino + "##UAA#";
+                amino = amino + + ""+ '*';
             }
             else if (currentORF.charAt(i+2) =='g'){   //then stop
-               amino = amino + "##UAG##";
+                amino = amino + + ""+ '*';
             }
         }
         else if (currentORF.charAt(i+1) == 'g'){
@@ -395,7 +395,7 @@ for (int j = 0; j < ORFBoth.size(); j++){
                 amino = amino + "" + 'C';
             }
             else if(currentORF.charAt(i+2) == 'a'){ // then stop
-                amino = amino + "#UGA#";
+                amino = amino + + ""+ '*';
                 }
             if (currentORF.charAt(i+2) == 'g'){ // then amino acid is trp
                 amino = amino + "" +'W';
