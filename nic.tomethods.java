@@ -8,6 +8,7 @@ class Nice {
     public static void main(final String arg[]) {
 
         //////////////////////// Scan from file to Char ArrayList
+
         final Scanner scnr = new Scanner(System.in);
         final ArrayList<Character> DNA = new ArrayList<Character>();
         String longWord;
@@ -17,7 +18,7 @@ class Nice {
 	System.out.println("What file?");
 	String fileName = scnr.next();
 
-////Scans name, makes sure orientation is 5' to 3'
+//sets parameters and prints name
         try {
             final File example = new File(fileName);
             final Scanner filo = new Scanner(example);
@@ -81,15 +82,16 @@ class Nice {
         }
 
 
-        ////////////////makes complementary strand in ArrayList Character
+        ////////////////makes ArrayList for complementary strand
         final ArrayList<Character> complementDNA = new ArrayList<Character>(); // new complement strand
         final ArrayList<String> ORFB = new ArrayList<String>();
         final ArrayList<String> ORFlocB = new ArrayList<String>();
         String ORFSB = "";
 	    String ORFBgood = "";
 
-        //////////////////// makes complementary strand in complementDNA from original DNA strand, reads
+        //////////////////// makes complementary strand in complementDNAfrom DNA, reads
         //////////////////// 5' to 3'
+
         for(int i = DNA.size()-1; i>=0;i--){
             char dna = DNA.get(i);
             if (dna == 'a') {
@@ -105,10 +107,11 @@ class Nice {
 
 
 
-        //////filter for minimum ORF size
-        int minsize = 0; //minimum orf size defaults to 0
+        //FILTER, sets minimum orf size
+        int minsize = 0; //minimum orf size
+
         Scanner scan = new Scanner(System.in);
-        System.out.println("Do you want to filter the size of ORFS? (enter minimum ORF size if yes, 0 if no)");
+        System.out.println("Do you want to filter the size of ORFS?(minimum ORF size if yes, 0 if no)");
         int orfsize =scan.nextInt();
                   minsize = orfsize-3;
 
@@ -141,13 +144,17 @@ class Nice {
                             complementDNA.set(i+2, MakeUpperCase(complementDNA.get(i+2)));
 
 
-//Filter, adds ORF only if length is greater than minsize
+//FILTER CODE, adds ORF only if length is greater than minsize
                         if (o>=minsize) {
                                 ORFBgood = ORFSB;
+                              //System.out.println(o);
                         }
                       else ORFBgood = "";
+//FILTER END
+
 
 		    	            i = i + 2;
+
                             break;
                             }
                         }
@@ -166,9 +173,8 @@ class Nice {
                 }
             }
 
-//////finds ORFs in original DNA strand	    
         ArrayList<String> ORFA = new ArrayList<String>();
-        //ArrayList<String> ORFlo = new ArrayList<String>();
+        //ArrayList<String> ORFloc = new ArrayList<String>();
         String ORFS = new String();
         String ORFgood = new String();
 
@@ -201,6 +207,8 @@ class Nice {
                                          }
 
                                 else ORFgood = "";
+                                //FILTER END
+
 
                                 i = i+2;
                                 break;
@@ -221,50 +229,27 @@ class Nice {
             }
         }
 
-	    
-////////////////////////////ORFs from original and complementary DNA strands listed as codons 
-	
+	    ///////lists ORF as codons
+	    /////for every third char add a dash, excluding last char
+    ////////////////////////////lists ORFs from original DNA strand as codons
     ArrayList<String> ORFAcodons = toCodons(ORFA);
+    //TO CODONS
     ArrayList<String> ORFBcodons = toCodons(ORFB);
 
 
 
-///////////////////////////////TRANSCRIPTION///////////
-        ArrayList<String> AmRNA = new ArrayList<String>();
-        ArrayList<String> BmRNA = new ArrayList<String>();
+        //////////////////////////TRANSCRIPTION////
+
+
+
+        ArrayList<String> AmRNA = tomRNA(ORFA);
+        ArrayList<String> BmRNA = tomRNA(ORFB);
 //AmRNA holds mRNA from original DNA strand, BmRNA holds mRNA from complementary strand
-
-        for (int i=0; i<ORFA.size(); i++) {
-
-            String s = ORFA.get(i);
-            for (int k=0; k<s.length(); k++) {
-                if (ORFA.get(i)=="t") {
-                    //AmRNA.add(MakeRNA(ORFA.get(i)));
-                    AmRNA.set(i, "u");
-                }
-            }
-            //System.out.println("ORF-- 1+:" + ORFA.get(i));
-        }
-        for (int i=0; i<ORFB.size(); i++) {
-            String s = ORFB.get(i);
-            for (int k=0; k<ORFB.size(); k++) {
-                if (ORFB.get(i)=="t") {
-                    BmRNA.set(i, "u");
-                }
-            }
-	    //System.out.println("ORF -- 1+:" + s);
-        }
-
-        for(final String letter : ORFA ){
-            AmRNA.add(MakeRNA(letter));
-        }
-        for(final String letter : ORFB){
-            BmRNA.add(MakeRNA(letter));
-        }
 
 
 
         /////////////////////////////////////////////mRNA from original and complementary DNA strand listed as codons//////////////////////////
+	///for every third char add a dash, excluding last char
       ArrayList<String> AmRNAcodons = toCodons(AmRNA);
       ArrayList<String> BmRNAcodons = toCodons(BmRNA);
 
@@ -474,7 +459,7 @@ for (int j = 0; j < ORFBoth.size(); j++){
             System.out.printf("\n\ntRNA " + (1+i) + "-: " + tRNAB.get(i));
         }
 
-///Print out proteins
+///Print out Proteins
     for(int i=0;i<aminoArray.size();i++){
     System.out.printf("\n\nProtein " + (1+i) + ": " + aminoArray.get(i));
         }
@@ -503,20 +488,9 @@ public static char MakeUpperCase(char let){
         return 'D';
     }
 
-    public static String MakeRNA(String let){
 
-        for(int i = 0; i<let.length(); i++){
-            switch (let.charAt(i)) {
-                    case ('t'):
-                        let = let.substring(0,i)+'u' + let.substring(i+1);
-                        break;
 
-            }
-        }
-        return let;
-    }
 
-/////method to take ORFs and return ORFs with codons separated by dashes
     public static ArrayList<String> toCodons (ArrayList<String> sequence) {
       int size = sequence.size();
 
@@ -528,8 +502,7 @@ public static char MakeUpperCase(char let){
           String codon = new String();
               for (int k=1; k<=orf_char.length; k++) {
                   codon += orf_char[k-1];
-///for every third char add a dash, excluding last char
-                  if (k%3==0 && k != orf_char.length) { 
+                  if (k%3==0 && k != orf_char.length) {
                   codon += '-';
                   }
               }
@@ -539,7 +512,28 @@ public static char MakeUpperCase(char let){
     }
 
 
-/////method to make tRNA based on mRNA
+    public static ArrayList<String> tomRNA (ArrayList<String> sequence) {
+      ArrayList<String> newmRNA = new ArrayList<String>(); //tobereturned
+      int size = sequence.size();
+          for (int i=0; i<size; i++) {
+                  ArrayList<Character> mRNA = new ArrayList<Character>();
+                  String s = sequence.get(i);
+                  char[] mrna = s.toCharArray();
+                      for (int k=0; k<s.length(); k++) {
+                              if (s.charAt(k)=='t') {
+                                      mrna[k] = 'u';
+                              }
+                      }
+                 String RNA = new String(mrna);
+                 newmRNA.add(RNA);
+           }
+
+          return newmRNA;
+
+}
+
+
+
     public static String MaketRNA(String let){
 
         for(int i = 0; i<let.length(); i++){
