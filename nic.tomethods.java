@@ -8,7 +8,6 @@ class Nice {
     public static void main(final String arg[]) {
 
         //////////////////////// Scan from file to Char ArrayList
-
         final Scanner scnr = new Scanner(System.in);
         final ArrayList<Character> DNA = new ArrayList<Character>();
         String longWord;
@@ -105,8 +104,6 @@ class Nice {
             }
         }
 
-
-
         //FILTER, sets minimum orf size
         int minsize = 0; //minimum orf size
 
@@ -114,9 +111,7 @@ class Nice {
         System.out.println("Do you want to filter the size of ORFS?(minimum ORF size if yes, 0 if no)");
         int orfsize =scan.nextInt();
                   minsize = orfsize-3;
-
-
-
+	    
        /////////////////////////////finds ORF in complementDNA///////////////////////////////
         for (int i=0; (i + 3) < complementDNA.size(); i++) {
             //System.out.println(i);
@@ -205,11 +200,8 @@ class Nice {
                                                 ORFgood = ORFS;
                                                 //System.out.println("o is greater than minsize");
                                          }
-
                                 else ORFgood = "";
                                 //FILTER END
-
-
                                 i = i+2;
                                 break;
                             }
@@ -236,11 +228,7 @@ class Nice {
     //TO CODONS
     ArrayList<String> ORFBcodons = toCodons(ORFB);
 
-
-
         //////////////////////////TRANSCRIPTION////
-
-
 
         ArrayList<String> AmRNA = tomRNA(ORFA);
         ArrayList<String> BmRNA = tomRNA(ORFB);
@@ -511,7 +499,6 @@ public static char MakeUpperCase(char let){
       return incodons;
     }
 
-
     public static ArrayList<String> tomRNA (ArrayList<String> sequence) {
       ArrayList<String> newmRNA = new ArrayList<String>(); //tobereturned
       int size = sequence.size();
@@ -527,9 +514,7 @@ public static char MakeUpperCase(char let){
                  String RNA = new String(mrna);
                  newmRNA.add(RNA);
            }
-
           return newmRNA;
-
 }
 
 
@@ -537,7 +522,6 @@ public static char MakeUpperCase(char let){
     public static String MaketRNA(String let){
 
         for(int i = 0; i<let.length(); i++){
-
             switch (let.charAt(i)) {
                     case ('a'):
                         let = let.substring(0,i)+'u' + let.substring(i+1);
@@ -555,5 +539,4 @@ public static char MakeUpperCase(char let){
         }
         return let;
     }
-
 }
