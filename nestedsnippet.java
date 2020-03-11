@@ -1,6 +1,6 @@
 String currentORFNested;
 String ORFSNested = new String();
-  ArrayList<String> ORFANested = new ArrayList<String>();
+  ArrayList<String> ORFANestedList = new ArrayList<String>();
    for (int q=0; q < ORFA.size(); q++) { //testing this with ORFA for now
        currentORFNested = ORFA.get(q);
             //System.out.println(i);
@@ -19,7 +19,7 @@ String ORFSNested = new String();
                                 //FILTER CODE
                                   if (ORFS.length()>=minsize) {
                                                 ORFgood = ORFS;
-                                                 ORFANested.add(ORFgood);
+                                                 ORFANestedList.add(ORFgood);
                                                 //System.out.println("o is greater than minsize");
                                          }
                                 else ORFgood = "";
