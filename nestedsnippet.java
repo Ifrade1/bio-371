@@ -1,10 +1,11 @@
-   String currentORFNested;
+String currentORFNested;
 String ORFSNested = new String();
-   for (int q=0; q < ORFA.size(); q++) {
+  ArrayList<String> ORFANested = new ArrayList<String>();
+   for (int q=0; q < ORFA.size(); q++) { //testing this with ORFA for now
        currentORFNested = ORFA.get(q);
             //System.out.println(i);
-            stringLen = currentORFNested.length;
-            for (int r = 3; stringLen-r < minsize; r++){ //go through string
+            stringLen = currentORFNested.length(); //current length of ORF
+            for (int r = 3; r <= stringLen; r++){ //go through string
                  if (currentORFNested.charAt(r) == 'a' || currentORFNested.charAt(r) == 'A') && (currentORFNested.charAt(r)(i+1) == 't' || currentORFNested.charAt(r)(i) == 'T') && (currentORFNested.charAt(r)(i+2)) == 'g' || currentORFNested.charAt(r)(i) == 'G') {
                     if (r != 0 && r%3 == 0) {
                          if (currentORFNested.charAt(r) == 't' || currentORFNested.charAt(r) == 'T') {
@@ -31,11 +32,8 @@ String ORFSNested = new String();
                     ORFS = ORFS + "" + currentORFNested.charAt(r);
                     i++;
                 }
-
-                if (ORFgood != "") {
-               
+                if (ORFgood != "") {            
                 }
-
                 ORFS = "";
                 ORFgood = "";
             }
