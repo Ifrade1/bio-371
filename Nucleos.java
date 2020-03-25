@@ -137,11 +137,13 @@ class Nucleos {
 
                     if (o%3 == 0) {
 
-                        if (complementDNA.get(i) == 't') {
+                        if (complementDNA.get(i) == 't' || complementDNA.get(i) == 'T') {
                             if
-                            ((complementDNA.get(i+1) == 'a' && complementDNA.get(i+2) == 'g') ||
-                            (complementDNA.get(i+1) == 'a' && complementDNA.get(i+2) == 'a') ||
-                            (complementDNA.get(i+1) == 'g' && complementDNA.get(i+2) == 'a'))
+                            ((complementDNA.get(i+1) == 'a' || complementDNA.get(i+1) == 'A') && 
+                            (complementDNA.get(i+2) == 'g' || complementDNA.get(i+2) == 'G') ||
+                            ((complementDNA.get(i+1) == 'a' || complementDNA.get(i+1) == 'A') && (complementDNA.get(i+2) == 'a'||
+                            complementDNA.get(i+2) == 'A')) ||
+                            ((complementDNA.get(i+1) == 'g'|| complementDNA.get(i+2) == 'G') && (complementDNA.get(i+2) == 'a' || complementDNA.get(i+2) == 'A')))
                             {
 
                             //System.out.println("STOP codon found at " + i);
@@ -231,7 +233,7 @@ class Nucleos {
                             if
                             (((DNA.get(i+1) == 'a'||DNA.get(i+1) == 'A') && (DNA.get(i+2) == 'g' ||  DNA.get(i+2) == 'G')) ||
                             ((DNA.get(i+1) == 'a'||DNA.get(i+1) == 'A') && (DNA.get(i+2) == 'a'||DNA.get(i+2) == 'A')) ||
-                            ((DNA.get(i+1) == 'g'|| DNA.get(i+1) == 'G') && (DNA.get(i+2) == 'a' ||  DNA.get(i+2) == 'a'))){
+                            ((DNA.get(i+1) == 'g'|| DNA.get(i+1) == 'G') && (DNA.get(i+2) == 'a' ||  DNA.get(i+2) == 'A'))){
                                 //System.out.println("STOP codon found at " + i);
                                 ORFS = ORFS + "" + DNA.get(i);
                                 DNA.set(i, MakeUpperCase(DNA.get(i)));
