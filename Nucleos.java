@@ -227,7 +227,7 @@ class Nucleos {
 
                     if (o%3 == 0) {
 
-                        if (DNA.get(i) == 't' || (DNA.get(i) == 'T') {
+                        if (DNA.get(i) == 't' || DNA.get(i) == 'T') {
                             if
                             (((DNA.get(i+1) == 'a'||DNA.get(i+1) == 'A') && (DNA.get(i+2) == 'g' ||  DNA.get(i+2) == 'G')) ||
                             ((DNA.get(i+1) == 'a'||DNA.get(i+1) == 'A') && (DNA.get(i+2) == 'a'||DNA.get(i+2) == 'A')) ||
