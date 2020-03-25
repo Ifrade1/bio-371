@@ -4,7 +4,7 @@ import java.util.*; //include .Scanner
 import java.util.ArrayList;
 import java.io.FileNotFoundException;
 
-class Nice {
+class Nucleos {
     public static void main(final String arg[]) {
 
         //////////////////////// Scan from file to Char ArrayList
@@ -86,7 +86,8 @@ class Nice {
         final ArrayList<String> ORFB = new ArrayList<String>();
         final ArrayList<String> ORFlocB = new ArrayList<String>();
         String ORFSB = "";
-	    String ORFBgood = "";
+        String ORFBgood = "";
+        
 
         //////////////////// makes complementary strand in complementDNAfrom DNA, reads
         //////////////////// 5' to 3'
@@ -112,12 +113,21 @@ class Nice {
         int orfsize =scan.nextInt();
                   minsize = orfsize-3;
 	    
-       /////////////////////////////finds ORF in complementDNA///////////////////////////////
-        for (int i=0; (i + 3) < complementDNA.size(); i++) {
-            //System.out.println(i);
+       /////////////////////////////finds START OF ORF in complementDNA///////////////////////////////
+        for (int i=0; (i + 2) < complementDNA.size()-1; i++) {
             if ((complementDNA.get(i) == 'a') && (complementDNA.get(i+1) == 't') && (complementDNA.get(i+2)) == 'g') {
+            
+                ORFlocB.add("" + i);
+            }           
+        }
 
-                ORFlocB.add(" " + i);
+    for(int j = 0; j<ORFlocB.size();j++){
+       /////////////////////////////////finds all ORF IN complementDNA ////////////////////////////////////////////////////
+        for (int i = Integer.parseInt(ORFlocB.get(j)); i<complementDNA.size();i++) {        ///SECOND F LOOP
+            //System.out.println(i);
+            //if ((complementDNA.get(i) == 'a') && (complementDNA.get(i+1) == 't') && (complementDNA.get(i+2)) == 'g') {
+
+                //ORFlocB.add(" " + i);
 
                 for (int o = 0; (i + 2) < complementDNA.size(); o++) {
 
@@ -139,13 +149,15 @@ class Nice {
                             complementDNA.set(i+2, MakeUpperCase(complementDNA.get(i+2)));
 
 
-//FILTER CODE, adds ORF only if length is greater than minsize
-                        if (o>=minsize) {
+                            //FILTER CODE, adds ORF only if length is greater than minsize
+                            if (o>=minsize) {
                                 ORFBgood = ORFSB;
                               //System.out.println(o);
-                        }
-                      else ORFBgood = "";
-//FILTER END
+                            }
+                            else{
+                                ORFBgood = "";
+                            }
+                            //FILTER END
 
 
 		    	            i = i + 2;
@@ -154,7 +166,7 @@ class Nice {
                             }
                         }
                     }
-
+                
                     ORFSB = ORFSB + "" + complementDNA.get(i);
                     complementDNA.set(i, MakeUpperCase(complementDNA.get(i)));
                     i++;
@@ -167,19 +179,29 @@ class Nice {
                     ORFBgood = "";
                 }
             }
+           // }
 
         ArrayList<String> ORFA = new ArrayList<String>();
-        //ArrayList<String> ORFloc = new ArrayList<String>();
+        ArrayList<String> ORFloc = new ArrayList<String>();
         String ORFS = new String();
         String ORFgood = new String();
 
+        for(int i=0; (i+2)<complementDNA.size()-1;i++){
+            if ((DNA.get(i) == 'a') && (DNA.get(i+1) == 't') && (DNA.get(i+2)) == 'g') {
+                ORFloc.add(""+i);
+            }
+        }
+    for(int j = 0; j<ORFloc.size();j++){
+
         for (int i=0; (i + 3) < DNA.size(); i++) {
             //System.out.println(i);
-            if ((DNA.get(i) == 'a') && (DNA.get(i+1) == 't') && (DNA.get(i+2)) == 'g') {
+            //if ((DNA.get(i) == 'a') && (DNA.get(i+1) == 't') && (DNA.get(i+2)) == 'g') {
 
                 for (int o = 0; i + 2 < DNA.size(); o++) {
+                    
                     if (o != 0 && o%3 == 0) {
-                         if (DNA.get(i) == 't') {
+                         
+                        if (DNA.get(i) == 't') {
                             if
                             ((DNA.get(i+1) == 'a' && DNA.get(i+2) == 'g') ||
                             (DNA.get(i+1) == 'a' && DNA.get(i+2) == 'a') ||
@@ -397,6 +419,9 @@ for (int j = 0; j < ORFBoth.size(); j++){
 
              System.out.print(compdna);
          }
+
+         /*
+
                 System.out.printf("\n\nDNA ORFs listed");
         //System.out.printf("\nORF 1+:");
          for(int i=0;i<ORFA.size();i++){
@@ -447,9 +472,11 @@ for (int j = 0; j < ORFBoth.size(); j++){
             System.out.printf("\n\ntRNA " + (1+i) + "-: " + tRNAB.get(i));
         }
 
-///Print out Proteins
-    for(int i=0;i<aminoArray.size();i++){
-    System.out.printf("\n\nProtein " + (1+i) + ": " + aminoArray.get(i));
+        */
+
+        ///Print out Proteins
+        for(int i=0;i<aminoArray.size();i++){
+            System.out.printf("\n\nProtein " + (1+i) + ": " + aminoArray.get(i));
         }
 
 
