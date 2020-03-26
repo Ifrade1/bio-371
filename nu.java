@@ -193,7 +193,7 @@ class Nucleos {
                 } // i
             } // j
 
-           // }
+//Find ORFS on the inputed strand
 
         ArrayList<String> ORFA = new ArrayList<String>();
         ArrayList<String> ORFloc = new ArrayList<String>();
@@ -201,9 +201,9 @@ class Nucleos {
         String ORFgood = new String();
 
        // System.out.println("The template is: " + DNA);
+//This for loop finds the locations of 'A''T''G', and then saves them. 
 
-
-        for(int i=0; (i+2)<complementDNA.size()-1;i++){
+        for(int i=0; (i+2)<DNA.size()-1;i++){
             if ((DNA.get(i) == 'a') && (DNA.get(i+1) == 't') && (DNA.get(i+2)) == 'g') {
                 ORFloc.add(""+i);
                 System.out.println(i + " ");
@@ -293,7 +293,7 @@ class Nucleos {
     ArrayList<String> ORFBcodons = toCodons(ORFB);
 
         //////////////////////////TRANSCRIPTION////
-
+	    
         ArrayList<String> AmRNA = tomRNA(ORFA);
         ArrayList<String> BmRNA = tomRNA(ORFB);
 //AmRNA holds mRNA from original DNA strand, BmRNA holds mRNA from complementary strand
@@ -327,8 +327,7 @@ class Nucleos {
         System.out.println("ORFA "+ ORFA.size());
         System.out.println("ORFB "+ ORFB.size());
 ///////////////////////TRANSLATION: Turn open reading frames into amino acids////////////
-
-
+////////////////////////////////////////////////////////////////////////////////////////
 ArrayList<String> ORFBoth = new ArrayList<String>();
 ORFBoth.addAll(ORFA);
 ORFBoth.addAll(ORFB);
@@ -338,9 +337,9 @@ String amino = "";
 for (int j = 0; j < ORFBoth.size(); j++){
     currentORF = ORFBoth.get(j);
     for (int i = 0; i< currentORF.length(); i= i+3){
-/////U
+/////U--
     if (currentORF.charAt(i) == 'u' || currentORF.charAt(i) =='t'){  //Starts with U  || 'T' || 't')
-        if (currentORF.charAt(i+1) == 'c'){ //UC*
+        if (currentORF.charAt(i+1) == 'c'){ //UC-
             amino = amino + "" +'S';// then the amino acid is ser
         }
         else if (currentORF.charAt(i+1) == 'u' || currentORF.charAt(i+1) =='t'){
@@ -356,7 +355,7 @@ for (int j = 0; j < ORFBoth.size(); j++){
                 amino = amino + "" +'Y';
             }
             else if (currentORF.charAt(i+2) == 'a') {
-                amino = amino + "*";
+                amino = amino + "*"; //stop
             }
             else if (currentORF.charAt(i+2) =='g'){   //then stop
                amino = amino + "*";
@@ -374,13 +373,13 @@ for (int j = 0; j < ORFBoth.size(); j++){
             }
         }
     }
-    ////C
+    ////C--
     if (currentORF.charAt(i) == 'c'){
         if (currentORF.charAt(i+1) == 'c'){ //then the amino acid is pro
             amino = amino + "" +'P'; //CC*
         }
         else if (currentORF.charAt(i+1) == 'u' || currentORF.charAt(i+1) =='t'){ // then the amino acid is leu
-        amino = amino + "" +'L'; //CU*
+        amino = amino + "" +'L'; //CU-
         }
         else if (currentORF.charAt(i+1) == 'a'){ //
                 if (currentORF.charAt(i+2) == 'u' || currentORF.charAt(i+2) =='t'|| currentORF.charAt(i+2) == 'c'){// then amino acid is his
@@ -394,7 +393,7 @@ for (int j = 0; j < ORFBoth.size(); j++){
             amino = amino + "" +'R';
                 }
             }
-    //////A
+    //////A--
     if  (currentORF.charAt(i) == 'a'){
         if (currentORF.charAt(i+1) == 'c') {  //then the amino acid is thr
         amino = amino + "" +'T';
@@ -424,14 +423,14 @@ for (int j = 0; j < ORFBoth.size(); j++){
             } //then amino acid is arg
         }
     }
-    ///////G
+    ///////G--
     if (currentORF.charAt(i) == 'g'){
         if (currentORF.charAt(i+1) == 'c'){
             amino = amino + "" + 'A';  //then the amino acid is ala
-        }//GC*
+        }//GC-
         else if (currentORF.charAt(i+1) == 'u' || currentORF.charAt(i+1) =='t'){
             amino = amino + "" +'V'; //then amino acid is val
-        } //GU*
+        } //GU-
         else if (currentORF.charAt(i+1) == 'a'){
             if (currentORF.charAt(i+2) == 'u' || currentORF.charAt(i+2) =='t'|| currentORF.charAt(i+2) == 'c'){
                 amino = amino + "" +'D';  //then amino acid is asp
@@ -441,21 +440,17 @@ for (int j = 0; j < ORFBoth.size(); j++){
             }
         }
         else if (currentORF.charAt(i+1) =='g'){ //then amino acid is gly
-            amino = amino + "" +'G'; //GG*
+            amino = amino + "" +'G'; //GG-
             }
         }
 
     }
     aminoArray.add(amino);
 	amino = "";
-}/// end of amino acid sequence builder
+}//////////////////////////// end of amino acid sequence builder////////////
 
-
+	    
     //System.out.println("Amino "+ aminoArray.size());
-
-        /*for (final Character rna : tRNA) {
-            System.out.print(rna);
-        }*/
 
         scnr.close();
 
@@ -560,8 +555,6 @@ public static char MakeUpperCase(char let){
     }
 
 
-
-
     public static ArrayList<String> toCodons (ArrayList<String> sequence) {
       int size = sequence.size();
 
@@ -624,7 +617,6 @@ public static char MakeUpperCase(char let){
 }
 
 //Notes:
-
 /*
 -capitalizing ORF without STOP
 -nesting
