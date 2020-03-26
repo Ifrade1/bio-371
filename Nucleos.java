@@ -143,7 +143,7 @@ class Nucleos {
                             (complementDNA.get(i+2) == 'g' || complementDNA.get(i+2) == 'G') ||
                             ((complementDNA.get(i+1) == 'a' || complementDNA.get(i+1) == 'A') && (complementDNA.get(i+2) == 'a'||
                             complementDNA.get(i+2) == 'A')) ||
-                            ((complementDNA.get(i+1) == 'g'|| complementDNA.get(i+2) == 'G') && (complementDNA.get(i+2) == 'a' || complementDNA.get(i+2) == 'A')))
+                            ((complementDNA.get(i+1) == 'g'|| complementDNA.get(i+1) == 'G') && (complementDNA.get(i+2) == 'a' || complementDNA.get(i+2) == 'A')))
                             {
 
                             //System.out.println("STOP codon found at " + i);
