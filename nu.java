@@ -242,6 +242,7 @@ class Nucleos {
                                 //FILTER CODE
                                   if (ORFS.length()>=minsize) {
                                             ORFgood = ORFS;
+					  	ORFS = "";
                                             //System.out.println("o is greater than minsize");
                                          }
                                 else ORFgood = "";
