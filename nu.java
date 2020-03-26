@@ -1,3 +1,6 @@
+//Elena, Nick, Isabel, Aretha
+//3-27-20
+//Bio-371
 import java.io.File;   //include.file
 import java.util.*; //include .Scanner
 import java.util.ArrayList;
