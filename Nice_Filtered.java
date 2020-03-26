@@ -1,10 +1,9 @@
-
 import java.io.File;   //include.file
 import java.util.*; //include .Scanner
 import java.util.ArrayList;
 import java.io.FileNotFoundException;
 
-class Nice {
+class Nucleos {
     public static void main(final String arg[]) {
 
         //////////////////////// Scan from file to Char ArrayList
@@ -86,7 +85,8 @@ class Nice {
         final ArrayList<String> ORFB = new ArrayList<String>();
         final ArrayList<String> ORFlocB = new ArrayList<String>();
         String ORFSB = "";
-	    String ORFBgood = "";
+        String ORFBgood = "";
+
 
         //////////////////// makes complementary strand in complementDNAfrom DNA, reads
         //////////////////// 5' to 3'
@@ -111,24 +111,41 @@ class Nice {
         System.out.println("Do you want to filter the size of ORFS?(minimum ORF size if yes, 0 if no)");
         int orfsize =scan.nextInt();
                   minsize = orfsize-3;
-	    
-       /////////////////////////////finds ORF in complementDNA///////////////////////////////
-        for (int i=0; (i + 3) < complementDNA.size(); i++) {
-            //System.out.println(i);
+
+       /////////////////////////////finds START OF ORF in complementDNA///////////////////////////////
+
+
+        for (int i=0; (i + 2) < complementDNA.size()-1; i++) {
             if ((complementDNA.get(i) == 'a') && (complementDNA.get(i+1) == 't') && (complementDNA.get(i+2)) == 'g') {
 
-                ORFlocB.add(" " + i);
+                ORFlocB.add("" + i);
+            }
+        }
+
+     //   System.out.println("-ORFs: " + ORFlocB);
+
+    for(int j = 0; j<ORFlocB.size();j++){
+       /////////////////////////////////finds all ORF IN complementDNA ////////////////////////////////////////////////////
+        for (int i = Integer.parseInt(ORFlocB.get(j)); i<complementDNA.size();i++) {        ///SECOND F LOOP
+          Boolean ORFdone = false;
+            //System.out.println(i);
+            //if ((complementDNA.get(i) == 'a') && (complementDNA.get(i+1) == 't') && (complementDNA.get(i+2)) == 'g') {
+
+                //ORFlocB.add(" " + i);
 
                 for (int o = 0; (i + 2) < complementDNA.size(); o++) {
 
-                    if (o != 0 && o%3 == 0) {
+                    if (o%3 == 0) {
 
-                        if (complementDNA.get(i) == 't') {
+                        if (complementDNA.get(i) == 't' || complementDNA.get(i) == 'T') {
                             if
-                            ((complementDNA.get(i+1) == 'a' && complementDNA.get(i+2) == 'g') ||
-                            (complementDNA.get(i+1) == 'a' && complementDNA.get(i+2) == 'a') ||
-                            (complementDNA.get(i+1) == 'g' && complementDNA.get(i+2) == 'a'))
+                            ((complementDNA.get(i+1) == 'a' || complementDNA.get(i+1) == 'A') &&
+                            (complementDNA.get(i+2) == 'g' || complementDNA.get(i+2) == 'G') ||
+                            ((complementDNA.get(i+1) == 'a' || complementDNA.get(i+1) == 'A') && (complementDNA.get(i+2) == 'a'||
+                            complementDNA.get(i+2) == 'A')) ||
+                            ((complementDNA.get(i+1) == 'g'|| complementDNA.get(i+2) == 'G') && (complementDNA.get(i+2) == 'a' || complementDNA.get(i+2) == 'A')))
                             {
+
                             //System.out.println("STOP codon found at " + i);
                             ORFSB = ORFSB + "" + complementDNA.get(i);
                             complementDNA.set(i, MakeUpperCase(complementDNA.get(i)));
@@ -139,51 +156,76 @@ class Nice {
                             complementDNA.set(i+2, MakeUpperCase(complementDNA.get(i+2)));
 
 
-//FILTER CODE, adds ORF only if length is greater than minsize
-                        if (o>=minsize) {
+                            //FILTER CODE, adds ORF only if length is greater than minsize
+                            if (ORFSB.length()>=minsize) {
                                 ORFBgood = ORFSB;
                               //System.out.println(o);
-                        }
-                      else ORFBgood = "";
-//FILTER END
+                            }
+                            else{
+                                ORFBgood = "";
+                            }
+                            //FILTER END
 
-
-		    	            i = i + 2;
-
+		    	                  i = i + 2;
+                            ORFdone = true;
                             break;
                             }
                         }
                     }
-
                     ORFSB = ORFSB + "" + complementDNA.get(i);
                     complementDNA.set(i, MakeUpperCase(complementDNA.get(i)));
                     i++;
-                    }
+                  } // o
 
+                  if (ORFdone == true) {
                     if (ORFBgood != "") {
                     	ORFB.add(ORFSB);
+                      ORFSB = "";
+                      ORFBgood = "";
                     }
-                    ORFSB = "";
-                    ORFBgood = "";
-                }
-            }
+                    break;
+                  }
+
+                } // i
+            } // j
+
+           // }
 
         ArrayList<String> ORFA = new ArrayList<String>();
-        //ArrayList<String> ORFloc = new ArrayList<String>();
+        ArrayList<String> ORFloc = new ArrayList<String>();
         String ORFS = new String();
         String ORFgood = new String();
 
-        for (int i=0; (i + 3) < DNA.size(); i++) {
-            //System.out.println(i);
+       // System.out.println("The template is: " + DNA);
+
+
+        for(int i=0; (i+2)<complementDNA.size()-1;i++){
             if ((DNA.get(i) == 'a') && (DNA.get(i+1) == 't') && (DNA.get(i+2)) == 'g') {
+                ORFloc.add(""+i);
+            }
+        }
+
+       // System.out.println("+ORFs: " + ORFloc);
+
+
+    for(int j = 0; j<ORFloc.size();j++){
+
+        for (int i = Integer.parseInt(ORFloc.get(j)); i < DNA.size(); i++) {
+
+          Boolean ORFdone = false;
+
+            //System.out.println(i);
+            //if ((DNA.get(i) == 'a') && (DNA.get(i+1) == 't') && (DNA.get(i+2)) == 'g') {
 
                 for (int o = 0; i + 2 < DNA.size(); o++) {
-                    if (o != 0 && o%3 == 0) {
-                         if (DNA.get(i) == 't') {
+
+                    if (o%3 == 0) {
+
+                        if (DNA.get(i) == 't' || DNA.get(i) == 'T') {
                             if
-                            ((DNA.get(i+1) == 'a' && DNA.get(i+2) == 'g') ||
-                            (DNA.get(i+1) == 'a' && DNA.get(i+2) == 'a') ||
-                            (DNA.get(i+1) == 'g' && DNA.get(i+2) == 'a')){
+                            (((DNA.get(i+1) == 'a'||DNA.get(i+1) == 'A') && (DNA.get(i+2) == 'g' ||  DNA.get(i+2) == 'G')) ||
+                            ((DNA.get(i+1) == 'a'||DNA.get(i+1) == 'A') && (DNA.get(i+2) == 'a'||DNA.get(i+2) == 'A')) ||
+                            ((DNA.get(i+1) == 'g'|| DNA.get(i+1) == 'G') && (DNA.get(i+2) == 'a' ||  DNA.get(i+2) == 'A'))){
                                 //System.out.println("STOP codon found at " + i);
                                 ORFS = ORFS + "" + DNA.get(i);
                                 DNA.set(i, MakeUpperCase(DNA.get(i)));
@@ -196,34 +238,49 @@ class Nice {
 
 
                                 //FILTER CODE
-                                  if (o>=minsize) {
-                                                ORFgood = ORFS;
-                                                //System.out.println("o is greater than minsize");
+                                  if (ORFS.length()>=minsize) {
+                                            ORFgood = ORFS;
+                                            //System.out.println("o is greater than minsize");
                                          }
                                 else ORFgood = "";
                                 //FILTER END
-                                i = i+2;
+
+                                i = i + 2;
+                                ORFdone = true;
                                 break;
                             }
                         }
+
                     }
                     ORFS = ORFS + "" + DNA.get(i);
                     DNA.set(i, MakeUpperCase(DNA.get(i)));
                     i++;
-                }
+                } // o
 
-                if (ORFgood != "") {
-                ORFA.add(ORFgood);
+                if (ORFdone == true) {
+                    if (ORFgood != "") {
+                        ORFA.add(ORFgood);
+                        ORFS = "";
+                        ORFgood = "";
+                        }
+                  break;
                 }
-
-                ORFS = "";
-                ORFgood = "";
-            }
-        }
+            } // i
+        } // j
 
 	    ///////lists ORF as codons
 	    /////for every third char add a dash, excluding last char
     ////////////////////////////lists ORFs from original DNA strand as codons
+
+    for (int i = 0; i < ORFA.size(); i++) {
+      ORFA.set(i, ORFA.get(i).toLowerCase());
+    }
+
+    for (int i = 0; i < ORFB.size(); i++) {
+      ORFB.set(i, ORFB.get(i).toLowerCase());
+    }
+
+
     ArrayList<String> ORFAcodons = toCodons(ORFA);
     //TO CODONS
     ArrayList<String> ORFBcodons = toCodons(ORFB);
@@ -260,6 +317,8 @@ class Nice {
             tRNAB.add(MaketRNA(letter));
 
         }
+        System.out.println("ORFA "+ ORFA.size());
+        System.out.println("ORFB "+ ORFB.size());
 ///////////////////////TRANSLATION: Turn open reading frames into amino acids////////////
 ArrayList<String> ORFBoth = new ArrayList<String>();
 ORFBoth.addAll(ORFA);
@@ -380,8 +439,9 @@ for (int j = 0; j < ORFBoth.size(); j++){
     }
     aminoArray.add(amino);
 	amino = "";
+}/// end of amino acid sequence builder
+    System.out.println("Amino "+ aminoArray.size());
 
-}
         /*for (final Character rna : tRNA) {
             System.out.print(rna);
         }*/
@@ -397,6 +457,8 @@ for (int j = 0; j < ORFBoth.size(); j++){
 
              System.out.print(compdna);
          }
+
+
                 System.out.printf("\n\nDNA ORFs listed");
         //System.out.printf("\nORF 1+:");
          for(int i=0;i<ORFA.size();i++){
@@ -406,7 +468,6 @@ for (int j = 0; j < ORFBoth.size(); j++){
         for(int i=0;i<ORFB.size();i++){
             System.out.printf("\n\nORF "+(1+i)+ "-:"+ORFB.get(i));
         }
-
         System.out.printf("\n\nDNA ORFs listed as codons");
         //System.out.printf("\nORF 1+:" + ORFAcodons);
         for(int i=0;i<ORFAcodons.size();i++){
@@ -416,7 +477,6 @@ for (int j = 0; j < ORFBoth.size(); j++){
         for(int i=0;i<ORFBcodons.size();i++){
             System.out.printf("\n\nORF "+(1+i) +"-: " + ORFBcodons.get(i));
         }
-
         System.out.printf("\n\nmRNA listed");
         //System.out.printf("\nORF 1+:" + AmRNA);
         for(int i=0;i<AmRNA.size();i++){
@@ -426,7 +486,6 @@ for (int j = 0; j < ORFBoth.size(); j++){
         for(int i=0;i<BmRNA.size();i++){
             System.out.printf("\n\nmRNA " + (1+i) + "-: " + BmRNA.get(i));
         }
-
         System.out.printf("\n\nmRNA listed as codons");
         //System.out.printf("\nORF 1+:" + AmRNAcodons);
         for(int i=0;i<AmRNAcodons.size();i++){
@@ -436,7 +495,6 @@ for (int j = 0; j < ORFBoth.size(); j++){
         for(int i=0;i<BmRNAcodons.size();i++){
             System.out.printf("\n\nmRNA " + (1+i)+ "-: " + BmRNAcodons.get(i));
         }
-
         System.out.printf("\n\ntRNA listed");
         //System.out.printf("\nORF 1+:"+ tRNAA);
         for(int i=0;i<tRNAA.size();i++){
@@ -447,31 +505,45 @@ for (int j = 0; j < ORFBoth.size(); j++){
             System.out.printf("\n\ntRNA " + (1+i) + "-: " + tRNAB.get(i));
         }
 
-///Print out Proteins
-    for(int i=0;i<aminoArray.size();i++){
-    System.out.printf("\n\nProtein " + (1+i) + ": " + aminoArray.get(i));
+        ///Print out Proteins
+        for(int i=0;i<aminoArray.size();i++){
+            System.out.printf("\n\nProtein " + (1+i) + ": " + aminoArray.get(i));
         }
 
 
          //System.out.printf("\nnon-Template ORFs are: " + ORFB);
          //System.out.printf("\nTemplate ORFs are: " + ORFA);
          System.out.printf("\n\n\n\n\t\t\t:)\n");
+         scan.close();
     }
 
 
 public static char MakeUpperCase(char let){
         switch(let){
             case('a'):
+              return 'A';
+            case('A'):
                 return 'A';
-            case('t'):
-                return 'T';
-            case('g'):
-                return 'G';
-            case('c'):
-                return 'C';
-            case('u'):
-                return 'U';
 
+            case('t'):
+              return 'T';
+            case('T'):
+                return 'T';
+
+            case('g'):
+              return 'G';
+            case('G'):
+                return 'G';
+
+            case('c'):
+              return 'C';
+            case('C'):
+                return 'C';
+
+            case('u'):
+              return 'U';
+            case('U'):
+                return 'U';
         }
         return 'D';
     }
@@ -517,8 +589,6 @@ public static char MakeUpperCase(char let){
           return newmRNA;
 }
 
-
-
     public static String MaketRNA(String let){
 
         for(int i = 0; i<let.length(); i++){
@@ -539,4 +609,12 @@ public static char MakeUpperCase(char let){
         }
         return let;
     }
+
 }
+
+//Notes:
+
+/*
+-capitalizing ORF without STOP
+-nesting
+*/
