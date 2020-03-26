@@ -139,8 +139,10 @@ class Nucleos {
 
                         if (complementDNA.get(i) == 't' || complementDNA.get(i) == 'T') {
                             if
-                           (((complementDNA.get(i+1) == 'a' || complementDNA.get(i+1) == 'A') && (complementDNA.get(i+2) == 'g' || complementDNA.get(i+2) == 'G')) ||
-                            ((complementDNA.get(i+1) == 'a' || complementDNA.get(i+1) == 'A') && (complementDNA.get(i+2) == 'a'||  complementDNA.get(i+2) == 'A'))  ||
+                            ((complementDNA.get(i+1) == 'a' || complementDNA.get(i+1) == 'A') &&
+                            (complementDNA.get(i+2) == 'g' || complementDNA.get(i+2) == 'G') ||
+                            ((complementDNA.get(i+1) == 'a' || complementDNA.get(i+1) == 'A') && (complementDNA.get(i+2) == 'a'||
+                            complementDNA.get(i+2) == 'A')) ||
                             ((complementDNA.get(i+1) == 'g'|| complementDNA.get(i+2) == 'G') && (complementDNA.get(i+2) == 'a' || complementDNA.get(i+2) == 'A')))
                             {
 
@@ -178,16 +180,11 @@ class Nucleos {
                   if (ORFdone == true) {
                     if (ORFBgood != "") {
                     	ORFB.add(ORFSB);
+                      ORFSB = "";
+                      ORFBgood = "";
                     }
                     break;
                   }
-
-                    // if (ORFSB != "") {
-                    // 	ORFB.add(ORFSB);
-                    // }
-
-                    ORFSB = "";
-                    ORFBgood = "";
 
                 } // i
             } // j
@@ -235,13 +232,13 @@ class Nucleos {
 
                                 ORFS = ORFS + "" + DNA.get(i+1);
                                 DNA.set(i+1, MakeUpperCase(DNA.get(i+1)));
-				    
+
                                 ORFS = ORFS + "" + DNA.get(i+2);
                                 DNA.set(i+2, MakeUpperCase(DNA.get(i+2)));
 
 
                                 //FILTER CODE
-                                  if (o>=minsize) {
+                                  if (ORFS.length()>=minsize) {
                                             ORFgood = ORFS;
                                             //System.out.println("o is greater than minsize");
                                          }
@@ -263,20 +260,27 @@ class Nucleos {
                 if (ORFdone == true) {
                     if (ORFgood != "") {
                         ORFA.add(ORFgood);
+                        ORFS = "";
+                        ORFgood = "";
                         }
                   break;
                 }
-
-               
-
-                ORFS = "";
-                ORFgood = "";
             } // i
         } // j
 
 	    ///////lists ORF as codons
 	    /////for every third char add a dash, excluding last char
     ////////////////////////////lists ORFs from original DNA strand as codons
+
+    for (int i = 0; i < ORFA.size(); i++) {
+      ORFA.set(i, ORFA.get(i).toLowerCase());
+    }
+
+    for (int i = 0; i < ORFB.size(); i++) {
+      ORFB.set(i, ORFB.get(i).toLowerCase());
+    }
+
+
     ArrayList<String> ORFAcodons = toCodons(ORFA);
     //TO CODONS
     ArrayList<String> ORFBcodons = toCodons(ORFB);
@@ -454,7 +458,7 @@ for (int j = 0; j < ORFBoth.size(); j++){
              System.out.print(compdna);
          }
 
-         
+
                 System.out.printf("\n\nDNA ORFs listed");
         //System.out.printf("\nORF 1+:");
          for(int i=0;i<ORFA.size();i++){
@@ -605,7 +609,7 @@ public static char MakeUpperCase(char let){
         }
         return let;
     }
-  
+
 }
 
 //Notes:
