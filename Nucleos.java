@@ -122,7 +122,7 @@ class Nucleos {
             }
         }
 
-        System.out.println("-ORFs: " + ORFlocB);
+     //   System.out.println("-ORFs: " + ORFlocB);
 
     for(int j = 0; j<ORFlocB.size();j++){
        /////////////////////////////////finds all ORF IN complementDNA ////////////////////////////////////////////////////
@@ -172,20 +172,17 @@ class Nucleos {
                             }
                         }
                     }
-
                     ORFSB = ORFSB + "" + complementDNA.get(i);
                     complementDNA.set(i, MakeUpperCase(complementDNA.get(i)));
                     i++;
-
                   } // o
 
                   if (ORFdone == true) {
-                    break;
-                  }
-
                     if (ORFBgood != "") {
                     	ORFB.add(ORFSB);
                     }
+                    break;
+                  }
 
                     // if (ORFSB != "") {
                     // 	ORFB.add(ORFSB);
@@ -204,7 +201,7 @@ class Nucleos {
         String ORFS = new String();
         String ORFgood = new String();
 
-        System.out.println("The template is: " + DNA);
+       // System.out.println("The template is: " + DNA);
 
 
         for(int i=0; (i+2)<complementDNA.size()-1;i++){
@@ -213,7 +210,7 @@ class Nucleos {
             }
         }
 
-        System.out.println("+ORFs: " + ORFloc);
+       // System.out.println("+ORFs: " + ORFloc);
 
 
     for(int j = 0; j<ORFloc.size();j++){
@@ -266,12 +263,13 @@ class Nucleos {
                 } // o
 
                 if (ORFdone == true) {
+                    if (ORFgood != "") {
+                        ORFA.add(ORFgood);
+                        }
                   break;
                 }
 
-                if (ORFgood != "") {
-                ORFA.add(ORFgood);
-                }
+               
 
                 ORFS = "";
                 ORFgood = "";
@@ -317,6 +315,8 @@ class Nucleos {
             tRNAB.add(MaketRNA(letter));
 
         }
+        System.out.println("ORFA "+ ORFA.size());
+        System.out.println("ORFB "+ ORFB.size());
 ///////////////////////TRANSLATION: Turn open reading frames into amino acids////////////
 ArrayList<String> ORFBoth = new ArrayList<String>();
 ORFBoth.addAll(ORFA);
@@ -437,8 +437,9 @@ for (int j = 0; j < ORFBoth.size(); j++){
     }
     aminoArray.add(amino);
 	amino = "";
+}/// end of amino acid sequence builder
+    System.out.println("Amino "+ aminoArray.size());
 
-}
         /*for (final Character rna : tRNA) {
             System.out.print(rna);
         }*/
@@ -455,7 +456,7 @@ for (int j = 0; j < ORFBoth.size(); j++){
              System.out.print(compdna);
          }
 
-         /*
+         
                 System.out.printf("\n\nDNA ORFs listed");
         //System.out.printf("\nORF 1+:");
          for(int i=0;i<ORFA.size();i++){
@@ -501,7 +502,6 @@ for (int j = 0; j < ORFBoth.size(); j++){
         for(int i=0;i<tRNAB.size();i++){
             System.out.printf("\n\ntRNA " + (1+i) + "-: " + tRNAB.get(i));
         }
-        */
 
         ///Print out Proteins
         for(int i=0;i<aminoArray.size();i++){
@@ -512,6 +512,7 @@ for (int j = 0; j < ORFBoth.size(); j++){
          //System.out.printf("\nnon-Template ORFs are: " + ORFB);
          //System.out.printf("\nTemplate ORFs are: " + ORFA);
          System.out.printf("\n\n\n\n\t\t\t:)\n");
+         scan.close();
     }
 
 
@@ -586,8 +587,6 @@ public static char MakeUpperCase(char let){
           return newmRNA;
 }
 
-
-
     public static String MaketRNA(String let){
 
         for(int i = 0; i<let.length(); i++){
@@ -608,11 +607,8 @@ public static char MakeUpperCase(char let){
         }
         return let;
     }
+  
 }
-
-
-
-
 
 //Notes:
 
