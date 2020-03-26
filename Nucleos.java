@@ -139,10 +139,8 @@ class Nucleos {
 
                         if (complementDNA.get(i) == 't' || complementDNA.get(i) == 'T') {
                             if
-                            ((complementDNA.get(i+1) == 'a' || complementDNA.get(i+1) == 'A') && 
-                            (complementDNA.get(i+2) == 'g' || complementDNA.get(i+2) == 'G') ||
-                            ((complementDNA.get(i+1) == 'a' || complementDNA.get(i+1) == 'A') && (complementDNA.get(i+2) == 'a'||
-                            complementDNA.get(i+2) == 'A')) ||
+                           (((complementDNA.get(i+1) == 'a' || complementDNA.get(i+1) == 'A') && (complementDNA.get(i+2) == 'g' || complementDNA.get(i+2) == 'G')) ||
+                            ((complementDNA.get(i+1) == 'a' || complementDNA.get(i+1) == 'A') && (complementDNA.get(i+2) == 'a'||  complementDNA.get(i+2) == 'A'))  ||
                             ((complementDNA.get(i+1) == 'g'|| complementDNA.get(i+2) == 'G') && (complementDNA.get(i+2) == 'a' || complementDNA.get(i+2) == 'A')))
                             {
 
@@ -157,7 +155,7 @@ class Nucleos {
 
 
                             //FILTER CODE, adds ORF only if length is greater than minsize
-                            if (o>=minsize) {
+                            if (ORFSB.length()>=minsize) {
                                 ORFBgood = ORFSB;
                               //System.out.println(o);
                             }
@@ -237,7 +235,7 @@ class Nucleos {
 
                                 ORFS = ORFS + "" + DNA.get(i+1);
                                 DNA.set(i+1, MakeUpperCase(DNA.get(i+1)));
-
+				    
                                 ORFS = ORFS + "" + DNA.get(i+2);
                                 DNA.set(i+2, MakeUpperCase(DNA.get(i+2)));
 
