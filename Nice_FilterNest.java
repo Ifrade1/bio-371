@@ -11,7 +11,8 @@ class Nice {
         final ArrayList<Character> DNA = new ArrayList<Character>();
         String longWord;
         ArrayList<String> codons = new ArrayList<String>();
-	String dnaName = "unknown";
+	//initial dna name
+	    String dnaName = "unknown";
 
 	System.out.println("What file?");
 	String fileName = scnr.next();
@@ -25,24 +26,25 @@ class Nice {
             final char or = scnr.next().charAt(0);
 
             while(filo.hasNextLine()){
-
+		//Reads line into string
                 longWord = filo.nextLine();//.toLowerCase();
-
-
+		//replaces 
                 longWord.replaceAll("\\s+","");
 
-
+		//if dna 5->3, it reads the string with dna into arraylist
                 if ((or == 'Y') || (or == 'y')) {
                     for (int i = 0; i < longWord.length(); i++) {
                         if(longWord.charAt(i) == '>'){
-
+				//copy to name if find > charecter
                             dnaName = longWord.substring(i+1, longWord.indexOf(' '));
                             System.out.println("Name found: " + dnaName);
                             break;
                         }
                         else{
+				//copy to longword and make lower case
                             longWord = longWord.toLowerCase();
                         }
+			    //only copy a t g c into strand
                         switch(longWord.charAt(i)){
                             case('a'):
                             case('t'):
@@ -53,9 +55,11 @@ class Nice {
                         }
                     }
                 } else {
+		//copy into strand backwards to fix it to 5->3
                     for (int i = longWord.length() - 1; i >= 0; i--) {
                         if(longWord.charAt(i) == '>'){
                             dnaName = longWord.substring(i+1, longWord.indexOf(' '));
+				//find dna name
                             System.out.println("Name found: " + dnaName);
                             break;
                         }
