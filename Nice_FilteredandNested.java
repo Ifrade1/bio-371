@@ -469,16 +469,21 @@ for (int j = 0; j < ORFBoth.size(); j++){
 
 public static char MakeUpperCase(char let){
         switch(let){
-            case('a'):
-                return 'A';
-            case('t'):
-                return 'T';
-            case('g'):
-                return 'G';
-            case('c'):
-                return 'C';
-            case('u'):
-                return 'U';
+        	case('a'):
+		case('A'):	
+                	return 'A';
+            	case('t'):
+		case('T'):
+                	return 'T';
+            	case('g'):
+		case('G'):
+                	return 'G';
+            	case('c'):
+		case('C'):
+                	return 'C';
+            	case('u'):
+		case('U'):
+                	return 'U';
 
         }
         return 'D';
