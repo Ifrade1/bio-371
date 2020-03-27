@@ -121,10 +121,22 @@ class Nice {
                             String codon = ComplementDNA.substring(i, i+3);
 
                             if (codon.equals("atg")) {
-                            System.out.println("start codon found");
-
+                            	System.out.println("start codon found");
+				
+				    //////////Changes th ORF to captital in complement strand/////
+				complementDNA.set(i, MakeUpperCase(complementDNA.get(i)));
+                            	complementDNA.set(i+1, MakeUpperCase(complementDNA.get(i+1)));
+                            	complementDNA.set(i+2, MakeUpperCase(complementDNA.get(i+2)));
+				    
                             for (int j = i+3; j< ComplementDNA.length() - 2; j = j+3) {
                                     String codon2 = ComplementDNA.substring(j, j+3);
+				    
+				    //////////Changes th ORF to captital in complement strand/////
+				 	complementDNA.set(j, MakeUpperCase(complementDNA.get(j)));
+                                	complementDNA.set(j+1, MakeUpperCase(complementDNA.get(j+1)));    
+                                	complementDNA.set(j+2, MakeUpperCase(complementDNA.get(j+2)));
+
+				    
                                     System.out.println(codon2);
                                     if ((codon2.equals("taa"))||(codon2.equals("tag"))||(codon2.equals("tga"))) {
                                          String orf = ComplementDNA.substring(i,j+3);
@@ -154,76 +166,6 @@ class Nice {
                       }
                     }
 
-
-
-
-
-
-
-
-
-/////old code for complementDNA ORFs
-/*
-       /////////////////////////////finds ORF in complementDNA///////////////////////////////
-        for (int i=0; (i + 3) < complementDNA.size(); i++) {
-            //System.out.println(i);
-            if ((complementDNA.get(i) == 'a') && (complementDNA.get(i+1) == 't') && (complementDNA.get(i+2)) == 'g') {
-
-                ORFlocB.add(" " + i);
-
-                for (int o = 0; (i + 2) < complementDNA.size(); o++) {
-
-                    if (o != 0 && o%3 == 0) {
-
-                        if (complementDNA.get(i) == 't') {
-                            if
-                            ((complementDNA.get(i+1) == 'a' && complementDNA.get(i+2) == 'g') ||
-                            (complementDNA.get(i+1) == 'a' && complementDNA.get(i+2) == 'a') ||
-                            (complementDNA.get(i+1) == 'g' && complementDNA.get(i+2) == 'a'))
-                            {
-                            //System.out.println("STOP codon found at " + i);
-                            ORFSB = ORFSB + "" + complementDNA.get(i);
-                            complementDNA.set(i, MakeUpperCase(complementDNA.get(i)));
-                            ORFSB = ORFSB + "" + complementDNA.get(i+1);
-                            complementDNA.set(i+1, MakeUpperCase(complementDNA.get(i+1)));
-
-                            ORFSB = ORFSB + "" + complementDNA.get(i+2);
-                            complementDNA.set(i+2, MakeUpperCase(complementDNA.get(i+2)));
-
-
-//FILTER CODE, adds ORF only if length is greater than minsize
-                        if (o>=minsize) {
-                                ORFBgood = ORFSB;
-                              //System.out.println(o);
-                        }
-                      else ORFBgood = "";
-//FILTER END
-
-
-		    	            i = i + 2;
-
-                            break;
-                            }
-                        }
-                    }
-
-                    ORFSB = ORFSB + "" + complementDNA.get(i);
-                    complementDNA.set(i, MakeUpperCase(complementDNA.get(i)));
-                    i++;
-                    }
-
-                    if (ORFBgood != "") {
-                    	ORFB.add(ORFSB);
-                    }
-                    ORFSB = "";
-                    ORFBgood = "";
-                }
-            }
-
-*/
-
-
-
         final String Dna = getStringRepresentation(DNA);
         ArrayList<String> ORFA = new ArrayList<String>();
         //ArrayList<String> ORFloc = new ArrayList<String>();
@@ -236,8 +178,20 @@ class Nice {
 
                   if (codon.equals("atg")) {
                   System.out.println("start codon found");
+			  
+			  //////////Changes th ORF to captital in DNA strand/////
+			  DNA.set(i, MakeUpperCase(DNA.get(i)));
+			  DNA.set(i+1, MakeUpperCase(DNA.get(i+1)));    
+			  DNA.set(i+2, MakeUpperCase(DNA.get(i+2)));
+
 
                   for (int j = i+3; j< Dna.length() - 2; j = j+3) {
+			
+			  //////////Changes th ORF to captital in DNA strand/////
+				DNA.set(j, MakeUpperCase(DNA.get(j)));
+				DNA.set(j+1, MakeUpperCase(DNA.get(j+1)));    
+				DNA.set(j+2, MakeUpperCase(DNA.get(j+2)));
+
                           String codon2 = Dna.substring(j, j+3);
                           System.out.println(codon2);
                           if ((codon2.equals("taa"))||(codon2.equals("tag"))||(codon2.equals("tga"))) {
