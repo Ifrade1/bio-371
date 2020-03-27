@@ -121,7 +121,7 @@ class Nice {
                             String codon = ComplementDNA.substring(i, i+3);
 
                             if (codon.equals("atg")) {
-                            	System.out.println("start codon found");
+                            	///System.out.println("start codon found");
 				
 				    //////////Changes th ORF to captital in complement strand/////
 				complementDNA.set(i, MakeUpperCase(complementDNA.get(i)));
@@ -137,17 +137,17 @@ class Nice {
                                 	complementDNA.set(j+2, MakeUpperCase(complementDNA.get(j+2)));
 
 				    
-                                    System.out.println(codon2);
+                                    ////System.out.println(codon2);
                                     if ((codon2.equals("taa"))||(codon2.equals("tag"))||(codon2.equals("tga"))) {
                                          String orf = ComplementDNA.substring(i,j+3);
-                                         System.out.println("found orf is "+ orf);
+                                      ////System.out.println("found orf is "+ orf);
 
                                   if (orf.length() >= minsize) {
                                   ORFBgood = orf;
                                   }
 
                                   else ORFBgood = "";
-                                  System.out.println("ORF good is "+ ORFBgood);
+                                  ////System.out.println("ORF good is "+ ORFBgood);
 
 
                                   if (ORFBgood != "") {
@@ -177,7 +177,7 @@ class Nice {
                   String codon = Dna.substring(i, i+3);
 
                   if (codon.equals("atg")) {
-                  System.out.println("start codon found");
+                 /// System.out.println("start codon found");
 			  
 			  //////////Changes th ORF to captital in DNA strand/////
 			  DNA.set(i, MakeUpperCase(DNA.get(i)));
@@ -193,17 +193,17 @@ class Nice {
 				DNA.set(j+2, MakeUpperCase(DNA.get(j+2)));
 
                           String codon2 = Dna.substring(j, j+3);
-                          System.out.println(codon2);
+                         /// System.out.println(codon2);
                           if ((codon2.equals("taa"))||(codon2.equals("tag"))||(codon2.equals("tga"))) {
                                String orf = Dna.substring(i,j+3);
-                               System.out.println("found orf is "+ orf);
+                             ////  System.out.println("found orf is "+ orf);
 
                         if (orf.length() >= minsize) {
                         ORFgood = orf;
                         }
 
                         else ORFgood = "";
-                        System.out.println("ORF good is "+ ORFgood);
+                        ///System.out.println("ORF good is "+ ORFgood);
 
 
                         if (ORFgood != "") {
